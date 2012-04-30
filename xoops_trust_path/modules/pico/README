@@ -106,6 +106,15 @@ pico is fast enough if you use content's cache.
 
 [b]HISTORY:[/b]
 
+1.83 (2012/04/30)
+- Changed =& new -> = new and ENGINE=MyISAM for PHP5.3 and MySQL 5.5
+- Fixed _content_histories table SQL ERROR ,MD5(`for_search`)->MD5(`body`)
+- disable show blocks on install
+- mymenu.php lost define _GLOBAL_LEFT ,Because admin menu caching from
+  XCL2.2.1beta2 #201,#202,#203,#204 http://www.xoopscube.net/redmine/issues/201
+- Supported "$modversion['trust_dirname']".
+  #245 http://www.xoopscube.net/redmine/issues/245
+
 1.82 (2009/08/20)
 - fixed preload.php considering directories begin with a number (thx 9darts)
 - changed list view for histories from poster/created to modifier/modified
@@ -628,6 +637,16 @@ d3forumを一緒にインストールすると幸せになれるかもしれません。
 
 
 [b]HISTORY:[/b]
+
+1.83 (2012/04/30)
+- PHP5.3 and MySQL 5.5 対応： =& new -> = new and ENGINE=MyISAM
+- バグ修正 _content_histories table SQL ERROR ,MD5(`for_search`)->MD5(`body`)
+- インストール時のブロックデフォルト表示を止めた
+- mymenu.php が define _GLOBAL_LEFT をロストする問題の修正。
+　admin menu が XCL2.2.1beta2 #201,#202,#203,#204 からキャッシュするため
+　http://www.xoopscube.net/redmine/issues/201
+- XCL2.2の"$modversion['trust_dirname']"　をサポート
+  #245 http://www.xoopscube.net/redmine/issues/245
 
 1.82 (2009/08/20)
 - preloadが数字からはじまるディレクトリ名を考慮しなかったのを修正 (thx 9darts)
