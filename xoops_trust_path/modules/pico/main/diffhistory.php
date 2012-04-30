@@ -18,7 +18,7 @@ $picoRequest['view'] = @$_GET['view'] == 'single' ? 'single' : 'diffhistories' ;
 
 // controller
 require_once dirname(dirname(__FILE__)).'/class/PicoControllerDiffHistories.class.php' ;
-$controller =& new PicoControllerDiffHistories( $currentCategoryObj ) ;
+$controller = new PicoControllerDiffHistories( $currentCategoryObj ) ;
 $controller->execute( $picoRequest ) ;
 
 // render

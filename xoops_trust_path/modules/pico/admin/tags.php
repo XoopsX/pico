@@ -127,7 +127,7 @@ while( $tag_row = $db->fetchArray( $trs ) ) {
 
 xoops_cp_header();
 include dirname(__FILE__).'/mymenu.php' ;
-$tpl =& new XoopsTpl() ;
+$tpl = new XoopsTpl() ;
 $tpl->assign( array(
 	'mydirname' => $mydirname ,
 	'mod_name' => $xoopsModule->getVar('name') ,

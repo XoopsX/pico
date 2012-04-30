@@ -70,7 +70,7 @@ function pico_global_search_base( $mydirname , $keywords , $andor , $limit , $of
 		$whr_kw = 1 ;
 	}
 
-	$content_handler =& new PicoContentHandler( $mydirname ) ;
+	$content_handler = new PicoContentHandler( $mydirname ) ;
 	$contents4assign = $content_handler->getContents4assign( "($whr_kw) AND ($whr_uid)" , 'created_time DESC' , $offset , $limit , false ) ;
 
 	$ret = array() ;

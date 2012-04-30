@@ -34,7 +34,7 @@ function execute( $request )
 
 	// contentObj
 	$cat_data = $this->currentCategoryObj->getData() ;
-	$this->contentObj =& new PicoContent( $this->mydirname , $request['content_id'] , $this->currentCategoryObj ) ;
+	$this->contentObj = new PicoContent( $this->mydirname , $request['content_id'] , $this->currentCategoryObj ) ;
 
 	// check existence
 	if( $this->contentObj->isError() ) {

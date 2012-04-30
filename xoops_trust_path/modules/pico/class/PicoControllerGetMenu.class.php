@@ -21,7 +21,7 @@ function execute( $request )
 {
 	parent::execute( $request ) ;
 
-	$categoryHandler =& new PicoCategoryHandler( $this->mydirname , $this->permissions ) ;
+	$categoryHandler = new PicoCategoryHandler( $this->mydirname , $this->permissions ) ;
 	$categories = $categoryHandler->getAllCategories() ;
 
 	// auto-register
@@ -30,7 +30,7 @@ function execute( $request )
 		$register_class = empty( $mod_config['auto_register_class'] ) ? 'PicoAutoRegisterWraps' : $mod_config['auto_register_class'] ;
 		require_once dirname(__FILE__).'/'.$register_class.'.class.php' ;
 		if( ! empty( $mod_config['wraps_auto_register'] ) ) {
-			$register_obj =& new $register_class( $this->mydirname , $mod_config ) ;
+			$register_obj = new $register_class( $this->mydirname , $mod_config ) ;
 			$register_obj->registerByCatvpath( $categoryObj->getData() ) ;
 		}
 	}

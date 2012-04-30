@@ -13,7 +13,7 @@ function b_pico_content_show( $options )
 	if( preg_match( '/[^0-9a-zA-Z_-]/' , $mydirname ) ) die( 'Invalid mydirname' ) ;
 
 	// $contentObj
-	$contentObj =& new PicoContent( $mydirname , $content_id ) ;
+	$contentObj = new PicoContent( $mydirname , $content_id ) ;
 	$content_data = $contentObj->getData() ;
 
 	// permission check
@@ -57,7 +57,7 @@ function b_pico_content_show( $options )
 	if( empty( $options['disable_renderer'] ) ) {
 		// render it
 		require_once XOOPS_ROOT_PATH.'/class/template.php' ;
-		$tpl =& new XoopsTpl() ;
+		$tpl = new XoopsTpl() ;
 		$tpl->assign( 'block' , $block ) ;
 		$ret['content'] = $tpl->fetch( $this_template ) ;
 		return $ret ;
@@ -91,7 +91,7 @@ function b_pico_content_edit( $options )
 	}
 
 	require_once XOOPS_ROOT_PATH.'/class/template.php' ;
-	$tpl =& new XoopsTpl() ;
+	$tpl = new XoopsTpl() ;
 	$tpl->assign( array(
 		'mydirname' => $mydirname ,
 		'contents' => $contents ,

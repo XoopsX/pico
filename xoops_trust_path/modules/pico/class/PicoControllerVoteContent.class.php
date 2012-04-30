@@ -24,7 +24,7 @@ function execute( $request )
 {
 	parent::execute( $request ) ;
 
-	$this->contentObj =& new PicoContent( $this->mydirname , $request['content_id'] , $this->currentCategoryObj ) ;
+	$this->contentObj = new PicoContent( $this->mydirname , $request['content_id'] , $this->currentCategoryObj ) ;
 
 	// check existence
 	if( $this->contentObj->isError() ) {

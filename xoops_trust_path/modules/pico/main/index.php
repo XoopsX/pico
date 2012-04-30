@@ -19,27 +19,27 @@ $picoRequest = $uriMapper->modifyRequest( $picoRequest , $currentCategoryObj ) ;
 if( $picoRequest['controller'] == 'content' ) {
 	// content (viewcontent)
 	require_once dirname(dirname(__FILE__)).'/class/PicoControllerGetContent.class.php' ;
-	$controller =& new PicoControllerGetContent( $currentCategoryObj ) ;
+	$controller = new PicoControllerGetContent( $currentCategoryObj ) ;
 } else if( $picoRequest['controller'] == 'htmlwrapped' ) {
 	// just html wrapping (viewcontent)
 	require_once dirname(dirname(__FILE__)).'/class/PicoControllerGetHtmlwrapped.class.php' ;
-	$controller =& new PicoControllerGetHtmlwrapped( $currentCategoryObj ) ;
+	$controller = new PicoControllerGetHtmlwrapped( $currentCategoryObj ) ;
 } else if( $picoRequest['controller'] == 'category' ) {
 	// category (subcategories and contents)
 	require_once dirname(dirname(__FILE__)).'/class/PicoControllerGetCategory.class.php' ;
-	$controller =& new PicoControllerGetCategory( $currentCategoryObj ) ;
+	$controller = new PicoControllerGetCategory( $currentCategoryObj ) ;
 } else if( $picoRequest['controller'] == 'latestcontents' ) {
 	// latestcontents under the category (mainly for rss)
 	require_once dirname(dirname(__FILE__)).'/class/PicoControllerGetLatestcontents.class.php' ;
-	$controller =& new PicoControllerGetLatestcontents( $currentCategoryObj ) ;
+	$controller = new PicoControllerGetLatestcontents( $currentCategoryObj ) ;
 } else if( $picoRequest['controller'] == 'querycontents' ) {
 	// querycontents (tag etc)
 	require_once dirname(dirname(__FILE__)).'/class/PicoControllerQueryContents.class.php' ;
-	$controller =& new PicoControllerQueryContents( $currentCategoryObj ) ;
+	$controller = new PicoControllerQueryContents( $currentCategoryObj ) ;
 } else {
 	// menu
 	require_once dirname(dirname(__FILE__)).'/class/PicoControllerGetMenu.class.php' ;
-	$controller =& new PicoControllerGetMenu( $currentCategoryObj ) ;
+	$controller = new PicoControllerGetMenu( $currentCategoryObj ) ;
 }
 
 // execute

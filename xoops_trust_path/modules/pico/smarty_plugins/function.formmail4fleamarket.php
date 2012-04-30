@@ -6,7 +6,7 @@ require_once XOOPS_TRUST_PATH.'/modules/pico/class/PicoFormProcessBySmartyBase.c
 
 function smarty_function_formmail4fleamarket( $params , &$smarty )
 {
-	$controller =& new PicoFormProcessBySmartyFormmail4fleamarket() ;
+	$controller = new PicoFormProcessBySmartyFormmail4fleamarket() ;
 	$controller->parseParameters( $params ) ;
 
 	// add a toEmail from xoopsUser

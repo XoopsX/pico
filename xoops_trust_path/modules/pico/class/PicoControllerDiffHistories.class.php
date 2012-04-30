@@ -45,7 +45,7 @@ function execute( $request )
 	// check each content_ids
 	if( $older_profile[1] != $newer_profile[1] ) die( 'Differenct content_ids each other' ) ;
 
-	$this->contentObj =& new PicoContent( $this->mydirname , $request['content_id'] , $this->currentCategoryObj ) ;
+	$this->contentObj = new PicoContent( $this->mydirname , $request['content_id'] , $this->currentCategoryObj ) ;
 
 	// add breadcrumbs if the content exists
 	if( ! $this->contentObj->isError() ) {
@@ -65,10 +65,10 @@ function execute( $request )
 	$diff_from_file4disp = '' ;
 	$original_error_level = error_reporting() ;
 	error_reporting( $original_error_level & ~ E_NOTICE & ~ E_WARNING ) ;
-	$diff =& new Text_Diff( explode("\n",$older_profile[2]) , explode("\n",$newer_profile[2]) ) ;
-	//$renderer =& new Text_Diff_Renderer_unified();
+	$diff = new Text_Diff( explode("\n",$older_profile[2]) , explode("\n",$newer_profile[2]) ) ;
+	//$renderer = new Text_Diff_Renderer_unified();
 	//$diff_str = htmlspecialchars( $renderer->render( $diff ) , ENT_QUOTES ) ;
-	$renderer =& new Text_Diff_Renderer_inline();
+	$renderer = new Text_Diff_Renderer_inline();
 	$this->assign['diff_str'] = $renderer->render( $diff ) ;
 	error_reporting( $original_error_level ) ;
 

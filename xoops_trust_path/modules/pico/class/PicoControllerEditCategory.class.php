@@ -27,7 +27,7 @@ function execute( $request )
 
 	// $categoryObj (not parent)
 	$picoPermission =& PicoPermission::getInstance() ;
-	$categoryObj =& new PicoCategory( $this->mydirname , $request['cat_id'] , $picoPermission->getPermissions( $this->mydirname ) , $page == 'makecategory' , $this->currentCategoryObj ) ;
+	$categoryObj = new PicoCategory( $this->mydirname , $request['cat_id'] , $picoPermission->getPermissions( $this->mydirname ) , $page == 'makecategory' , $this->currentCategoryObj ) ;
 
 	// check existence
 	if( $categoryObj->isError() ) {
@@ -54,7 +54,7 @@ function execute( $request )
 	}
 
 	// category list can be read for category jumpbox etc.
-	$categoryHandler =& new PicoCategoryHandler( $this->mydirname , $this->permissions ) ;
+	$categoryHandler = new PicoCategoryHandler( $this->mydirname , $this->permissions ) ;
 	$categories = $categoryHandler->getAllCategories() ;
 	$this->assign['categories_can_post'] = array() ;
 	foreach( $categories as $tmpObj ) {

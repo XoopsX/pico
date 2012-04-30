@@ -28,7 +28,7 @@ function execute( $request )
 	$page = empty( $request['makecontent'] ) ? 'contentmanager' : 'makecontent' ;
 
 	// $contentObj
-	$contentObj =& new PicoContent( $this->mydirname , $request['content_id'] , $this->currentCategoryObj , $page == 'makecontent' ) ;
+	$contentObj = new PicoContent( $this->mydirname , $request['content_id'] , $this->currentCategoryObj , $page == 'makecontent' ) ;
 
 	// check existence
 	if( $contentObj->isError() ) {
@@ -56,7 +56,7 @@ function execute( $request )
 	}
 
 	// category list can be read for category jumpbox etc.
-	$categoryHandler =& new PicoCategoryHandler( $this->mydirname , $this->permissions ) ;
+	$categoryHandler = new PicoCategoryHandler( $this->mydirname , $this->permissions ) ;
 	$categories = $categoryHandler->getAllCategories() ;
 	$this->assign['categories_can_post'] = array() ;
 	foreach( $categories as $tmpObj ) {

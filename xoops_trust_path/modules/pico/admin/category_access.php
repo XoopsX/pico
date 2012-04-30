@@ -85,7 +85,7 @@ if( ! empty( $_POST['user_update'] ) ) {
 		if( empty( $_POST['new_can_read'][$i] ) ) continue ;
 		if( empty( $_POST['new_uids'][$i] ) ) {
 			// add new user by uname
-			$criteria =& new Criteria( 'uname' , mysql_real_escape_string( @$_POST['new_unames'][$i] ) ) ;
+			$criteria = new Criteria( 'uname' , mysql_real_escape_string( @$_POST['new_unames'][$i] ) ) ;
 			@list( $user ) = $member_handler->getUsers( $criteria ) ;
 		} else {
 			// add new user by uid
@@ -177,7 +177,7 @@ for( $i = 0 ; $i < 5 ; $i ++ ) {
 
 xoops_cp_header();
 include dirname(__FILE__).'/mymenu.php' ;
-$tpl =& new XoopsTpl() ;
+$tpl = new XoopsTpl() ;
 $tpl->assign( array(
 	'mydirname' => $mydirname ,
 	'mod_name' => $xoopsModule->getVar('name') ,

@@ -48,7 +48,7 @@ function execute( $request )
 	if( ! empty( $this->mod_config['wraps_auto_register'] ) && @$cat_data['cat_vpath']{0} == '/' ) {
 		$register_class = empty( $this->mod_config['auto_register_class'] ) ? 'PicoAutoRegisterWraps' : $this->mod_config['auto_register_class'] ;
 		require_once dirname(__FILE__).'/'.$register_class.'.class.php' ;
-		$register_obj =& new $register_class( $this->mydirname , $this->mod_config ) ;
+		$register_obj = new $register_class( $this->mydirname , $this->mod_config ) ;
 		$affected_rows = $register_obj->registerByCatvpath( $cat_data ) ;
 		if( $affected_rows > 0 ) {
 			// reload if the content is updated

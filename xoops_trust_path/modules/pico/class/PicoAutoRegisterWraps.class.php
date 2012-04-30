@@ -102,7 +102,7 @@ function removeContent( $content_id )
 // public
 function syncCatvpath( $cat_id , $cat_vpath , $wrap_dir )
 {
-	$content_handler =& new PicoContentHandler( $this->mydirname ) ;
+	$content_handler = new PicoContentHandler( $this->mydirname ) ;
 	$registered_vpaths = array_flip( $content_handler->getAutoRegisteredContents( $cat_id ) ) ;
 	$removal_vpaths = $registered_vpaths ;
 
@@ -155,7 +155,7 @@ function registerByCatvpath( $category_row )
 		$affected_rows = $this->syncCatvpath( $cat_id , $cat_vpath , $wrap_dir ) ;
 
 		// touch `cat_vpath_mtime`
-		$categoryHandler =& new PicoCategoryHandler( $this->mydirname ) ;
+		$categoryHandler = new PicoCategoryHandler( $this->mydirname ) ;
 		$categoryHandler->touchVpathMtime( $cat_id ) ;
 	}
 

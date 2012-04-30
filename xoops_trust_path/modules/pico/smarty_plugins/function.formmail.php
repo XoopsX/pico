@@ -6,7 +6,7 @@ require_once XOOPS_TRUST_PATH.'/modules/pico/class/PicoFormProcessBySmartyBase.c
 
 function smarty_function_formmail( $params , &$smarty )
 {
-	$controller =& new PicoFormProcessBySmartyFormmail() ;
+	$controller = new PicoFormProcessBySmartyFormmail() ;
 	$controller->parseParameters( $params ) ;
 
 	// toEmails from 'adminmail'

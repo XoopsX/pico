@@ -30,14 +30,14 @@ function execute( $request )
 	if( ! empty( $request['tag'] ) ) {
 		$queries[] = array( 'type' => 'tag' , 'value' => $request['tag'] ) ;
 		// get content_ids
-		$tag_handler =& new PicoTagHandler( $this->mydirname ) ;
+		$tag_handler = new PicoTagHandler( $this->mydirname ) ;
 		$content_ids_sc = $tag_handler->getContentIdsCS( $request['tag'] ) ;
 		if( $content_ids_sc ) $whr .= " AND (`content_id` IN (".$content_ids_sc."))" ;
 		else $whr .= " AND 0" ;
 	}
 
 	// content handler
-	$content_handler =& new PicoContentHandler( $this->mydirname ) ;
+	$content_handler = new PicoContentHandler( $this->mydirname ) ;
 
 	// contents (order by modified_time DESC)
 	$this->assign['contents'] = array() ;

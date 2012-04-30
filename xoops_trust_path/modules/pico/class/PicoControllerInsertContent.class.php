@@ -46,7 +46,7 @@ function execute( $request )
 	$content_uri4html = XOOPS_URL."/modules/$this->mydirname/".pico_common_make_content_link4html( $this->mod_config , $content_id , $this->mydirname ) ;
 
 	// get contentObj
-	$this->contentObj =& new PicoContent( $this->mydirname , $content_id , $this->currentCategoryObj ) ;
+	$this->contentObj = new PicoContent( $this->mydirname , $content_id , $this->currentCategoryObj ) ;
 	$content_data = $this->contentObj->getData() ;
 
 	// return uri

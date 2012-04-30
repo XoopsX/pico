@@ -40,7 +40,7 @@ function execute( $request )
 	if( ! empty( $this->mod_config['wraps_auto_register'] ) && @$cat_data['cat_vpath']{0} == '/' ) {
 		$register_class = empty( $this->mod_config['auto_register_class'] ) ? 'PicoAutoRegisterWraps' : $this->mod_config['auto_register_class'] ;
 		require_once dirname(__FILE__).'/'.$register_class.'.class.php' ;
-		$register_obj =& new $register_class( $this->mydirname , $this->mod_config ) ;
+		$register_obj = new $register_class( $this->mydirname , $this->mod_config ) ;
 		$register_obj->registerByCatvpath( $cat_data ) ;
 	}
 
@@ -52,7 +52,7 @@ function execute( $request )
 	}
 
 	// subcategories
-	$categoryHandler =& new PicoCategoryHandler( $this->mydirname , $this->permissions ) ;
+	$categoryHandler = new PicoCategoryHandler( $this->mydirname , $this->permissions ) ;
 	$subcategoryObjs = $categoryHandler->getSubCategories( $request['cat_id'] ) ;
 	foreach( $subcategoryObjs as $subcategoryObj ) {
 		$this->assign['subcategories'][] = $subcategoryObj->getData4html() ;

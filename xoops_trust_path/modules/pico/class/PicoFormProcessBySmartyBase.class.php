@@ -319,7 +319,7 @@ class PicoFormProcessBySmartyBase
 		$this->fetchFormBody( $params , $smarty ) ;
 
 		// Form Processor
-		$this->form_processor =& new FormProcessByHtml() ;
+		$this->form_processor = new FormProcessByHtml() ;
 		$this->form_processor->setFieldsByForm( $this->form_body , $this->ignore_field_names ) ;
 
 		// process post (then redirect)

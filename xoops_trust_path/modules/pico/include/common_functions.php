@@ -27,8 +27,8 @@ function pico_common_get_objects_from_content_id( $mydirname , $content_id )
 	$picoPermission =& PicoPermission::getInstance() ;
 	$permissions = $picoPermission->getPermissions( $mydirname ) ;
 	$cat_id = pico_common_get_cat_id_from_content_id( $mydirname , $content_id ) ;
-	$categoryObj =& new PicoCategory( $mydirname , intval( $cat_id ) , $permissions ) ;
-	$contentObj =& new PicoContent( $mydirname , $content_id , $categoryObj ) ;
+	$categoryObj = new PicoCategory( $mydirname , intval( $cat_id ) , $permissions ) ;
+	$contentObj = new PicoContent( $mydirname , $content_id , $categoryObj ) ;
 
 	return array( $categoryObj , $contentObj ) ;
 }

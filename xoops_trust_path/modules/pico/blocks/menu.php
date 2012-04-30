@@ -12,7 +12,7 @@ function b_pico_menu_show( $options )
 	if( preg_match( '/[^0-9a-zA-Z_-]/' , $mydirname ) ) die( 'Invalid mydirname' ) ;
 
 	// category handler
-	$categoryHandler =& new PicoCategoryHandler( $mydirname ) ;
+	$categoryHandler = new PicoCategoryHandler( $mydirname ) ;
 
 	// category objects
 	if( $cat_ids === array() ) {
@@ -62,7 +62,7 @@ function b_pico_menu_show( $options )
 	if( empty( $options['disable_renderer'] ) ) {
 		// render it
 		require_once XOOPS_ROOT_PATH.'/class/template.php' ;
-		$tpl =& new XoopsTpl() ;
+		$tpl = new XoopsTpl() ;
 		$tpl->assign( 'block' , $block ) ;
 		$ret['content'] = $tpl->fetch( $this_template ) ;
 		return $ret ;
@@ -85,7 +85,7 @@ function b_pico_menu_edit( $options )
 	if( preg_match( '/[^0-9a-zA-Z_-]/' , $mydirname ) ) die( 'Invalid mydirname' ) ;
 
 	require_once XOOPS_ROOT_PATH.'/class/template.php' ;
-	$tpl =& new XoopsTpl() ;
+	$tpl = new XoopsTpl() ;
 	$tpl->assign( array(
 		'mydirname' => $mydirname ,
 		'categories' => $cat_ids ,

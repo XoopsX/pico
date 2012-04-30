@@ -26,7 +26,7 @@ if( ! empty( $_POST['contentman_preview'] ) ) {
 }
 
 require_once dirname(dirname(__FILE__)).'/class/'.$controller_class.'.class.php' ;
-$controller =& new $controller_class( $currentCategoryObj ) ;
+$controller = new $controller_class( $currentCategoryObj ) ;
 $controller->execute( $picoRequest ) ;
 
 // render

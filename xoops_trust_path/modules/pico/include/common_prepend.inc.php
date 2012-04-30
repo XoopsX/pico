@@ -20,7 +20,7 @@ $breadcrumbsObj->appendPath( XOOPS_URL.'/modules/'.$mydirname.'/index.php' , $xo
 // URI Mapper
 $mapper_class = empty( $xoopsModuleConfig['uri_mapper_class'] ) ? 'PicoUriMapper' : $xoopsModuleConfig['uri_mapper_class'] ;
 require_once dirname(dirname(__FILE__)).'/class/'.$mapper_class.'.class.php' ;
-$uriMapper =& new $mapper_class( $mydirname , $xoopsModuleConfig ) ;
+$uriMapper = new $mapper_class( $mydirname , $xoopsModuleConfig ) ;
 $uriMapper->initGet() ;
 
 // get requests
@@ -31,7 +31,7 @@ $picoPermission =& PicoPermission::getInstance() ;
 $permissions = $picoPermission->getPermissions( $mydirname ) ;
 
 // current category object
-$currentCategoryObj =& new PicoCategory( $mydirname , $picoRequest['cat_id'] , $permissions ) ;
+$currentCategoryObj = new PicoCategory( $mydirname , $picoRequest['cat_id'] , $permissions ) ;
 if( $currentCategoryObj->isError() ) {
 	redirect_header( XOOPS_URL."/modules/$mydirname/index.php" , 2 , _MD_PICO_ERR_READCATEGORY ) ;
 	exit ;

@@ -28,7 +28,7 @@ function execute( $request )
 	$cat_data = $this->currentCategoryObj->getData() ;
 	$breadcrumbsObj =& AltsysBreadcrumbs::getInstance() ;
 
-	$this->contentObj =& new PicoContent( $this->mydirname , $request['content_id'] , $this->currentCategoryObj ) ;
+	$this->contentObj = new PicoContent( $this->mydirname , $request['content_id'] , $this->currentCategoryObj ) ;
 
 	// add breadcrumbs if the content exists
 	if( ! $this->contentObj->isError() ) {

@@ -30,9 +30,10 @@ function getAllCategories( $return_prohibited_also = false )
 	}
 
 	$ret = array() ;
+//for php5.3+
 	while( list( $cat_id ) = $db->fetchRow( $crs ) ) {
-		$objTemp =& new PicoCategory( $this->mydirname , $cat_id , $this->permissions ) ;
-		if( $return_prohibited_also || $objTemp->data['can_read'] ) $ret[ $cat_id ] =& $objTemp ;
+		$objTemp = new PicoCategory( $this->mydirname , $cat_id , $this->permissions ) ;
+		if( $return_prohibited_also || $objTemp->data['can_read'] ) $ret[ $cat_id ] = $objTemp ;
 	}
 
 	return $ret ;
@@ -50,9 +51,10 @@ function getSubCategories( $cat_id , $return_prohibited_also = false )
 	}
 
 	$ret = array() ;
+//for php5.3+
 	while( list( $cat_id ) = $db->fetchRow( $crs ) ) {
-		$objTemp =& new PicoCategory( $this->mydirname , $cat_id , $this->permissions ) ;
-		if( $return_prohibited_also || $objTemp->data['can_read'] ) $ret[ $cat_id ] =& $objTemp ;
+		$objTemp = new PicoCategory( $this->mydirname , $cat_id , $this->permissions ) ;
+		if( $return_prohibited_also || $objTemp->data['can_read'] ) $ret[ $cat_id ] = $objTemp ;
 	}
 
 	return $ret ;
@@ -61,7 +63,7 @@ function getSubCategories( $cat_id , $return_prohibited_also = false )
 
 function &get( $cat_id )
 {
-	$retObj =& new PicoCategory( $this->mydirname , $cat_id , $this->permissions ) ;
+	$retObj = new PicoCategory( $this->mydirname , $cat_id , $this->permissions ) ;
 	return $retObj ;
 }
 
@@ -241,13 +243,13 @@ function getBreadcrumbs()
 
 function getContents( $return_prohibited_also = false )
 {
-	$content_handler =& new PicoContentHandler( $this->mydirname ) ;
+	$content_handler = new PicoContentHandler( $this->mydirname ) ;
 	return $content_handler->getCategoryContents( $this , $return_prohibited_also ) ;
 }
 
 function getLatestContents( $num = 0 , $fetch_from_subcategories = false )
 {
-	$content_handler =& new PicoContentHandler( $this->mydirname ) ;
+	$content_handler = new PicoContentHandler( $this->mydirname ) ;
 	return $content_handler->getCategoryLatestContents( $this , $num , $fetch_from_subcategories ) ;
 }
 

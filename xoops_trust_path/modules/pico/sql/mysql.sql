@@ -11,7 +11,7 @@ CREATE TABLE category_permissions (
   KEY (cat_id),
   KEY (uid),
   KEY (groupid)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 INSERT INTO category_permissions (cat_id,uid,groupid,permissions) VALUES (0,NULL,1,'a:8:{s:8:"can_read";i:1;s:12:"can_readfull";i:1;s:8:"can_post";i:1;s:8:"can_edit";i:1;s:10:"can_delete";i:1;s:18:"post_auto_approved";i:1;s:12:"is_moderator";i:1;s:19:"can_makesubcategory";i:1;}');
 INSERT INTO category_permissions (cat_id,uid,groupid,permissions) VALUES (0,NULL,2,'a:8:{s:8:"can_read";i:1;s:12:"can_readfull";i:1;s:8:"can_post";i:0;s:8:"can_edit";i:0;s:10:"can_delete";i:0;s:18:"post_auto_approved";i:0;s:12:"is_moderator";i:0;s:19:"can_makesubcategory";i:0;}');
@@ -39,7 +39,7 @@ CREATE TABLE categories (
   KEY (cat_permission_id),
   KEY (cat_weight),
   KEY (pid)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 INSERT INTO categories (cat_id,pid,cat_title) VALUES (0,0xffff,'TOP');
 
@@ -92,7 +92,7 @@ CREATE TABLE contents (
   KEY (visible),
   KEY (votes_sum),
   KEY (votes_count)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE content_votes (
   vote_id int(10) unsigned NOT NULL auto_increment,
@@ -104,7 +104,7 @@ CREATE TABLE content_votes (
   PRIMARY KEY (vote_id),
   KEY (content_id),
   KEY (vote_ip)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE content_histories (
   content_history_id int(10) unsigned NOT NULL auto_increment,
@@ -128,7 +128,7 @@ CREATE TABLE content_histories (
   KEY (created_time),
   KEY (modified_time),
   KEY (modifier_uid)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE content_extras (
   content_extra_id int(10) unsigned NOT NULL auto_increment,
@@ -141,7 +141,7 @@ CREATE TABLE content_extras (
   KEY (content_id),
   KEY (extra_type),
   KEY (created_time)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE tags (
   label varchar(255) NOT NULL default '',
@@ -154,6 +154,6 @@ CREATE TABLE tags (
   KEY (count),
   KEY (weight),
   KEY (created_time)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 

@@ -35,7 +35,7 @@ function pico_onupdate_base( $module , $mydirname )
 	$check_sql = "SELECT COUNT(*) FROM ".$db->prefix($mydirname."_category_permissions") ;
 	if( ! $db->query( $check_sql ) ) {
 		$db->queryF( "DROP TABLE ".$db->prefix($mydirname."_category_access") ) ;
-		$db->queryF( "CREATE TABLE ".$db->prefix($mydirname."_category_permissions")." ( cat_id smallint(5) unsigned NOT NULL default 0, uid mediumint(8) default NULL, groupid smallint(5) default NULL, permissions text, UNIQUE KEY (cat_id,uid), UNIQUE KEY (cat_id,groupid), KEY (cat_id), KEY (uid), KEY (groupid)) TYPE=MyISAM" ) ;
+		$db->queryF( "CREATE TABLE ".$db->prefix($mydirname."_category_permissions")." ( cat_id smallint(5) unsigned NOT NULL default 0, uid mediumint(8) default NULL, groupid smallint(5) default NULL, permissions text, UNIQUE KEY (cat_id,uid), UNIQUE KEY (cat_id,groupid), KEY (cat_id), KEY (uid), KEY (groupid)) ENGINE=MyISAM" ) ;
 	}
 
 	// 0.2 -> 0.9
@@ -55,7 +55,7 @@ function pico_onupdate_base( $module , $mydirname )
 	// 1.0 -> 1.1/1.2
 	$check_sql = "SELECT COUNT(*) FROM ".$db->prefix($mydirname."_content_histories") ;
 	if( ! $db->query( $check_sql ) ) {
-		$db->queryF( "CREATE TABLE ".$db->prefix($mydirname."_content_histories")." ( content_history_id int(10) unsigned NOT NULL auto_increment, content_id int(10) unsigned NOT NULL default 0, vpath varchar(255), cat_id smallint(5) unsigned NOT NULL default 0, created_time int(10) NOT NULL default 0, modified_time int(10) NOT NULL default 0, poster_uid mediumint(8) unsigned NOT NULL default 0, poster_ip varchar(15) NOT NULL default '', modifier_uid mediumint(8) unsigned NOT NULL default 0, modifier_ip varchar(15) NOT NULL default '', subject varchar(255) NOT NULL default '', htmlheader mediumtext, body mediumtext, filters text, PRIMARY KEY (content_history_id), KEY (content_id), KEY (created_time), KEY (modified_time), KEY (modifier_uid) ) TYPE=MyISAM" ) ;
+		$db->queryF( "CREATE TABLE ".$db->prefix($mydirname."_content_histories")." ( content_history_id int(10) unsigned NOT NULL auto_increment, content_id int(10) unsigned NOT NULL default 0, vpath varchar(255), cat_id smallint(5) unsigned NOT NULL default 0, created_time int(10) NOT NULL default 0, modified_time int(10) NOT NULL default 0, poster_uid mediumint(8) unsigned NOT NULL default 0, poster_ip varchar(15) NOT NULL default '', modifier_uid mediumint(8) unsigned NOT NULL default 0, modifier_ip varchar(15) NOT NULL default '', subject varchar(255) NOT NULL default '', htmlheader mediumtext, body mediumtext, filters text, PRIMARY KEY (content_history_id), KEY (content_id), KEY (created_time), KEY (modified_time), KEY (modifier_uid) ) ENGINE=MyISAM" ) ;
 		$db->queryF( "ALTER TABLE ".$db->prefix($mydirname."_contents")." MODIFY htmlheader mediumtext, MODIFY htmlheader_waiting mediumtext, MODIFY body mediumtext, MODIFY body_waiting mediumtext, MODIFY body_cached mediumtext" ) ;
 	}
 
@@ -70,7 +70,7 @@ function pico_onupdate_base( $module , $mydirname )
 	// 1.3/1.4 -> 1.5/1.6
 	$check_sql = "SELECT COUNT(*) FROM ".$db->prefix($mydirname."_content_extras") ;
 	if( ! $db->query( $check_sql ) ) {
-		$db->queryF( "CREATE TABLE ".$db->prefix($mydirname."_content_extras")." ( content_extra_id int(10) unsigned NOT NULL auto_increment, content_id int(10) unsigned NOT NULL default 0, extra_type varchar(255) NOT NULL default '', created_time int(10) NOT NULL default 0, modified_time int(10) NOT NULL default 0, data mediumtext, PRIMARY KEY (content_extra_id), KEY (content_id), KEY (extra_type), KEY (created_time) ) TYPE=MyISAM" ) ;
+		$db->queryF( "CREATE TABLE ".$db->prefix($mydirname."_content_extras")." ( content_extra_id int(10) unsigned NOT NULL auto_increment, content_id int(10) unsigned NOT NULL default 0, extra_type varchar(255) NOT NULL default '', created_time int(10) NOT NULL default 0, modified_time int(10) NOT NULL default 0, data mediumtext, PRIMARY KEY (content_extra_id), KEY (content_id), KEY (extra_type), KEY (created_time) ) ENGINE=MyISAM" ) ;
 		$db->queryF( "ALTER TABLE ".$db->prefix($mydirname."_contents")." ADD `locked` tinyint(1) NOT NULL default 0 AFTER subject_waiting, ADD `redundants` text AFTER filters" ) ;
 	}
 	$check_sql = "SHOW CREATE TABLE ".$db->prefix($mydirname."_content_histories") ;
@@ -88,7 +88,7 @@ function pico_onupdate_base( $module , $mydirname )
 		$db->queryF( "ALTER TABLE ".$db->prefix($mydirname."_content_histories")." ADD tags text, ADD extra_fields mediumtext" ) ;
 		$db->queryF( "ALTER TABLE ".$db->prefix($mydirname."_categories")." ADD `cat_permission_id` int(10) unsigned NOT NULL AFTER `cat_id`, ADD KEY (`cat_permission_id`)" ) ;
 		$db->queryF( "UPDATE ".$db->prefix($mydirname."_categories")." SET `cat_permission_id`=`cat_id`" ) ;
-		$db->queryF( "CREATE TABLE ".$db->prefix($mydirname."_tags")." ( label varchar(255) NOT NULL default '', weight int(10) unsigned NOT NULL default 0, count int(10) unsigned NOT NULL default 0, content_ids mediumtext, created_time int(10) NOT NULL default 0, modified_time int(10) NOT NULL default 0, PRIMARY KEY (label), KEY (count), KEY (weight), KEY (created_time) ) TYPE=MyISAM" ) ;
+		$db->queryF( "CREATE TABLE ".$db->prefix($mydirname."_tags")." ( label varchar(255) NOT NULL default '', weight int(10) unsigned NOT NULL default 0, count int(10) unsigned NOT NULL default 0, content_ids mediumtext, created_time int(10) NOT NULL default 0, modified_time int(10) NOT NULL default 0, PRIMARY KEY (label), KEY (count), KEY (weight), KEY (created_time) ) ENGINE=MyISAM" ) ;
 	}
 
 	// TEMPLATES (all templates have been already removed by modulesadmin)

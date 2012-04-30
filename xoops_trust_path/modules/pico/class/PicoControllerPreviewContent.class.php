@@ -52,7 +52,7 @@ function processPreview( $request )
 	$this->assign['content']['ef'] = pico_common_unserialize( $request['extra_fields'] ) ;
 
 	// temporary $contentObj
-	$tmpContentObj =& new PicoContent( $this->mydirname , 0 , $this->currentCategoryObj , true ) ;
+	$tmpContentObj = new PicoContent( $this->mydirname , 0 , $this->currentCategoryObj , true ) ;
 
 	// preview
 	$this->assign['preview'] = array(

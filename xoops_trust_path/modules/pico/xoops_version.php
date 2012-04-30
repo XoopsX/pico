@@ -19,6 +19,7 @@ $modversion['license'] = "GPL" ;
 $modversion['official'] = 0 ;
 $modversion['image'] = file_exists( $mydirpath.'/module_icon.png' ) ? 'module_icon.png' : 'module_icon.php' ;
 $modversion['dirname'] = $mydirname ;
+$modversion['trust_dirname'] = $mytrustdirname ;
 $modversion['read_any'] = true ;
 
 // Any tables can't be touched by modulesadmin.
@@ -43,6 +44,15 @@ $modversion['sub'] = array() ;
 if( is_object( @$GLOBALS['xoopsModule'] ) && $GLOBALS['xoopsModule']->getVar('dirname') == $mydirname ) {
 	require_once dirname(__FILE__).'/include/common_functions.php' ;
 	$modversion['sub'] = pico_common_get_submenu( $mydirname ) ;
+} else {
+	$_sub_menu_cache = XOOPS_TRUST_PATH . '/cache/'. urlencode(substr(XOOPS_URL, 7)) . '_' . $mydirname . '_' . (is_object(@$GLOBALS['xoopsUser'])? join('-', $GLOBALS['xoopsUser']->getGroups()):XOOPS_GROUP_ANONYMOUS)  . '_' . $GLOBALS['xoopsConfig']['language'] . '.submenu';
+	if (is_file($_sub_menu_cache) && time() - 3600 < filemtime($_sub_menu_cache)) {
+		$modversion['sub'] = unserialize(file_get_contents($_sub_menu_cache));
+	} else {
+		require_once dirname(__FILE__).'/include/common_functions.php' ;
+		$modversion['sub'] = pico_common_get_submenu( $mydirname ) ;
+		file_put_contents($_sub_menu_cache, serialize($modversion['sub']));
+	}
 }
 
 // All Templates can't be touched by modulesadmin.
@@ -57,7 +67,6 @@ $modversion['blocks'][1] = array(
 	'edit_func'		=> 'b_pico_menu_edit' ,
 	'options'		=> "$mydirname||" ,
 	'template'		=> '' , // use "module" template instead
-	'visible_any'	=> true ,
 	'can_clone'		=> true ,
 ) ;
 
@@ -69,7 +78,6 @@ $modversion['blocks'][2] = array(
 	'edit_func'		=> 'b_pico_content_edit' ,
 	'options'		=> "$mydirname|1||1" ,
 	'template'		=> '' , // use "module" template instead
-	'visible_any'	=> true ,
 	'can_clone'		=> true ,
 ) ;
 
@@ -81,7 +89,6 @@ $modversion['blocks'][3] = array(
 	'edit_func'		=> 'b_pico_list_edit' ,
 	'options'		=> "$mydirname||o.created_time DESC|10||0" ,
 	'template'		=> '' , // use "module" template instead
-	'visible_any'	=> true ,
 	'can_clone'		=> true ,
 ) ;
 
@@ -93,7 +100,6 @@ $modversion['blocks'][4] = array(
 	'edit_func'		=> 'b_pico_subcategories_edit' ,
 	'options'		=> "$mydirname|0|" ,
 	'template'		=> '' , // use "module" template instead
-	'visible_any'	=> true ,
 	'can_clone'		=> true ,
 ) ;
 
@@ -105,7 +111,6 @@ $modversion['blocks'][5] = array(
 	'edit_func'		=> 'b_pico_mywaitings_edit' ,
 	'options'		=> "$mydirname|" ,
 	'template'		=> '' , // use "module" template instead
-	'visible_any'	=> false ,
 	'can_clone'		=> true ,
 ) ;
 
@@ -117,7 +122,6 @@ $modversion['blocks'][6] = array(
 	'edit_func'		=> 'b_pico_tags_edit' ,
 	'options'		=> "$mydirname|30|count DESC|count DESC|" ,
 	'template'		=> '' , // use "module" template instead
-	'visible_any'	=> true ,
 	'can_clone'		=> true ,
 ) ;
 

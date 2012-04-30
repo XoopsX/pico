@@ -9,7 +9,7 @@ function pico_xoopstpl( $mydirname , $text , $content4assign )
 {
 	global $xoopsTpl ;
 
-	$tpl =& new XoopsTpl() ;
+	$tpl = new XoopsTpl() ;
 	//$tpl->plugins_dir[] = dirname(dirname(__FILE__)).'/smarty_plugins' ;
 	array_unshift( $tpl->plugins_dir , dirname(dirname(__FILE__)).'/smarty_plugins' ) ; // pico plugin has the first priority
 

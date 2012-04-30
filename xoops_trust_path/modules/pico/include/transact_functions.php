@@ -327,7 +327,7 @@ function pico_get_requests4category( $mydirname , $cat_id = null )
 		}
 	}
 
-	return array( 
+	return array(
 		'cat_title' => $myts->stripSlashesGPC( @$_POST['cat_title'] ) ,
 		'cat_desc' => $myts->stripSlashesGPC( @$_POST['cat_desc'] ) ,
 		'cat_weight' => intval( @$_POST['cat_weight'] ) ,
@@ -466,7 +466,7 @@ function pico_get_requests4content( $mydirname , &$errors , $auto_approval = tru
 		unset( $filters[ $filter_prohibited ] ) ;
 	}
 
-	$ret = array( 
+	$ret = array(
 		'cat_id' => $cat_id ,
 		'vpath' => trim( $myts->stripSlashesGPC( @$_POST['vpath'] ) ) ,
 		'subject' => $myts->stripSlashesGPC( @$_POST['subject'] ) ,
@@ -568,7 +568,7 @@ function pico_get_requests4content( $mydirname , &$errors , $auto_approval = tru
 	// extra_fields (read ef class and create the object)
 	$ef_class = empty( $mod_config['extra_fields_class'] ) ? 'PicoExtraFields' : preg_replace( '/[^0-9a-zA-Z_]/' , '' , $mod_config['extra_fields_class'] ) ;
 	require_once dirname(dirname(__FILE__)).'/class/'.$ef_class.'.class.php' ;
-	$ef_obj =& new $ef_class( $mydirname , $mod_config , $auto_approval , $isadminormod , $content_id ) ;
+	$ef_obj = new $ef_class( $mydirname , $mod_config , $auto_approval , $isadminormod , $content_id ) ;
 	$ret['extra_fields'] = $ef_obj->getSerializedRequestsFromPost() ;
 
 	return $ret ;
@@ -715,7 +715,7 @@ function pico_transact_copyfromwaitingcontent( $mydirname , $content_id )
 	$uid = is_object( $xoopsUser ) ? $xoopsUser->getVar('uid') : 0 ;
 	if( ! $db->query( "UPDATE ".$db->prefix($mydirname."_contents")." SET body=body_waiting, subject=subject_waiting, htmlheader=htmlheader_waiting, visible=1, approval=1 WHERE content_id=$content_id" ) ) die( _MD_PICO_ERR_SQL.__LINE__ ) ;
 	if( ! $db->query( "UPDATE ".$db->prefix($mydirname."_contents")." SET body_waiting='',subject_waiting='',htmlheader_waiting='' ,body_cached='',for_search='' WHERE content_id=$content_id" ) ) die( _MD_PICO_ERR_SQL.__LINE__ ) ;
-	// /*,`modified_time`=UNIX_TIMESTAMP(),modifier_uid='$uid',modifier_ip='".mysql_real_escape_string(@$_SERVER['REMOTE_ADDR'])."'*/ 
+	// /*,`modified_time`=UNIX_TIMESTAMP(),modifier_uid='$uid',modifier_ip='".mysql_real_escape_string(@$_SERVER['REMOTE_ADDR'])."'*/
 
 	return $content_id ;
 }
@@ -733,8 +733,11 @@ function pico_transact_backupcontent( $mydirname , $content_id , $forced = false
 
 	// fetch the latest history first
 	list( $last_ch_id ) = $db->fetchRow( $db->query( "SELECT MAX(content_history_id) FROM ".$db->prefix($mydirname."_content_histories")." WHERE content_id=".intval($content_id) ) ) ;
-	list( $last_ch_modified , $last_ch_4search ) = $db->fetchRow( $db->query( "SELECT `modified_time`,MD5(`for_search`) FROM ".$db->prefix($mydirname."_content_histories")." WHERE content_history_id=".intval($last_ch_id) ) ) ;
-	list( $current_4search ) = $db->fetchRow( $db->query( "SELECT MD5(`for_search`) FROM ".$db->prefix($mydirname."_contents")." WHERE content_id=".intval($content_id) ) ) ;
+//FIX by domifara 2011.09.21
+//	list( $last_ch_modified , $last_ch_4search ) = $db->fetchRow( $db->query( "SELECT `modified_time`,MD5(`for_search`) FROM ".$db->prefix($mydirname."_content_histories")." WHERE content_history_id=".intval($last_ch_id) ) ) ;
+//	list( $current_4search ) = $db->fetchRow( $db->query( "SELECT MD5(`for_search`) FROM ".$db->prefix($mydirname."_contents")." WHERE content_id=".intval($content_id) ) ) ;
+	list( $last_ch_modified , $last_ch_4search ) = $db->fetchRow( $db->query( "SELECT `modified_time`,MD5(`body`) FROM ".$db->prefix($mydirname."_content_histories")." WHERE content_history_id=".intval($last_ch_id) ) ) ;
+	list( $current_4search ) = $db->fetchRow( $db->query( "SELECT MD5(`body`) FROM ".$db->prefix($mydirname."_contents")." WHERE content_id=".intval($content_id) ) ) ;
 
 	// compare for_search fileld (it is not saved if identical)
 	if( ! $forced && $current_4search == $last_ch_4search ) return ;
