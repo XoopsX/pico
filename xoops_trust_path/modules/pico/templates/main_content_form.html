@@ -137,7 +137,9 @@
 					<{$body_wysiwyg}>
 				<{else}>
 					<{if $xcl22 }>
-						<{if !$content.body || !$content.filter_infos.xcode.enabled}>
+						<{if $content.filter_infos.eval.enabled}>
+							<{assign var=editor value=none}>
+						<{elseif !$content.body || !$content.filter_infos.xcode.enabled}>
 						    <{assign var=editor value=html}>
 						<{else}>
 						    <{assign var=editor value=bbcode}>
