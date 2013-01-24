@@ -139,7 +139,7 @@
 					<{if $xcl22 }>
 						<{if $content.filter_infos.eval.enabled}>
 							<{assign var=editor value=none}>
-						<{elseif !$content.body || !$content.filter_infos.xcode.enabled}>
+						<{elseif !$content.subject || !$content.filter_infos.xcode.enabled}>
 						    <{assign var=editor value=html}>
 						<{else}>
 						    <{assign var=editor value=bbcode}>
