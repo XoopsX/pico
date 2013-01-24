@@ -106,6 +106,10 @@ pico is fast enough if you use content's cache.
 
 [b]HISTORY:[/b]
 
+1.84 (2012/01/24)
+- Supported XCL 2.2 HTML editor specification (template)
+- Fixed missing `for_search` by `modified_time` sets to past time
+
 1.83 (2012/04/30)
 - Changed =& new -> = new and ENGINE=MyISAM for PHP5.3 and MySQL 5.5
 - Fixed _content_histories table SQL ERROR ,MD5(`for_search`)->MD5(`body`)
@@ -637,6 +641,10 @@ d3forumを一緒にインストールすると幸せになれるかもしれません。
 
 
 [b]HISTORY:[/b]
+
+1.84 (2012/01/24)
+- XCL 2.2 の HTML editor 仕様に対応 (template)
+- 更新日付を過去にしてコンテンツを更新すると、for_searchフィールドの値が空になり、検索にヒットしなくなる問題の修正。
 
 1.83 (2012/04/30)
 - PHP5.3 and MySQL 5.5 対応： =& new -> = new and ENGINE=MyISAM
