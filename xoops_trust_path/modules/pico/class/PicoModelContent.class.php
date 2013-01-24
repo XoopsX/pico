@@ -273,7 +273,8 @@ function filterBody( $content4assign )
 
 	// store the result into body_cached and for_search field just after modification of the content
 	// if( empty( $content4assign['for_search'] ) ) {
-	if( $content4assign['last_cached_time'] < $content4assign['modified_time'] ) {
+	// if( $content4assign['last_cached_time'] < $content4assign['modified_time'] ) {
+	if( empty( $content4assign['for_search'] ) || $content4assign['last_cached_time'] < $content4assign['modified_time'] ) {// edit by nao-pon ref. http://www.xugj.org/modules/QandA/index.php?topic_id=1891
 		$for_search = $content4assign['subject_raw'] . ' ' . strip_tags( $text ) . ' ' . implode( ' ' , array_values( pico_common_unserialize( @$content4assign['extra_fields'] ) ) ) ;
 		$db->queryF( "UPDATE ".$db->prefix($this->mydirname."_contents")." SET body_cached='".mysql_real_escape_string($text)."', for_search='".mysql_real_escape_string($for_search)."', last_cached_time=UNIX_TIMESTAMP() WHERE content_id=".intval($content4assign['content_id']) ) ;
 
