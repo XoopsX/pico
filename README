@@ -106,6 +106,9 @@ pico is fast enough if you use content's cache.
 
 [b]HISTORY:[/b]
 
+1.85 (2013/05/27)
+- Added a new config "Contents path of Error:404"
+
 1.84 (2013/01/24)
 - Supported XCL 2.2 HTML editor specification (template)
 - Fixed missing `for_search` by `modified_time` sets to past time
@@ -641,6 +644,12 @@ d3forumを一緒にインストールすると幸せになれるかもしれません。
 
 
 [b]HISTORY:[/b]
+
+1.85 (2013/05/27)
+- 一般設定に、新しい設定項目「404 エラーで表示するコンテンツ」を追加。
+    対象ページが見つからず、404 エラーとなった場合に表示するコンテンツファイルへのパス。
+    冒頭での "xoops_root_path" は  XOOPS_ROOT_PATH(実パス) に、"xoops_trust_path" は
+    XOOPS_TRUST_PATH(実パス) と解釈されます。
 
 1.84 (2013/01/24)
 - XCL 2.2 の HTML editor 仕様に対応 (template)

@@ -11,7 +11,8 @@ $constpref = '_MI_' . strtoupper( $mydirname ) ;
 
 $modversion['name'] = $mydirname ;
 $modversion['description'] = constant($constpref.'_DESC') ;
-$modversion['version'] = 1.84 ;
+$modversion['version'] = 1.85 ;
+$modversion['detailed_version'] = "1.85.0" ;
 $modversion['credits'] = "PEAK Corp.";
 $modversion['author'] = "GIJ=CHECKMATE<br />PEAK Corp.(http://www.peak.ne.jp/)<br />XOOPS X�@(ten)�@Distribution�ihttps://github.com/XoopsX/pico�j" ;
 $modversion['help'] = "" ;
