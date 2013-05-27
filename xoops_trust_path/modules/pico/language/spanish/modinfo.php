@@ -119,53 +119,55 @@ define( $constpref.'_LOADED' , 1 ) ;
 define($constpref."_NAME","pico");
 
 // A brief description of this module
-define($constpref."_DESC","Módulo para contenido estático");
+define($constpref."_DESC","Mï¿½dulo para contenido estï¿½tico");
 
 // admin menus
 define( $constpref.'_ADMENU_CONTENTSADMIN' , 'Lista de contenidos' ) ;
-define( $constpref.'_ADMENU_CATEGORYACCESS' , 'Permisos de Categorías' ) ;
+define( $constpref.'_ADMENU_CATEGORYACCESS' , 'Permisos de Categorï¿½as' ) ;
 define( $constpref.'_ADMENU_IMPORT' , 'Importar/Sincronizar' ) ;
 
 // configurations
 define($constpref.'_USE_WRAPSMODE','Habilitar modo de arropado');
+define($constpref.'_ERR_DOCUMENT_404','Contents path of Error:404');
+define($constpref.'_ERR_DOCUMENT_404DSC','The path to the contents file displayed when it becomes 404 errors (Page Not Found).<br/>Repalaces "xoops_root_path" to "'.XOOPS_ROOT_PATH.'" and "xoops_trust_path" to "'.XOOPS_TRUST_PATH.'" at head.');
 define($constpref.'_WRAPSAUTOREGIST','Habilitar el auto-registro de archivos HTML arropados en la base de datos como contenido');
-define($constpref.'_TOP_MESSAGE','Descripción de categoría PRINCIPAL');
+define($constpref.'_TOP_MESSAGE','Descripciï¿½n de categorï¿½a PRINCIPAL');
 define($constpref.'_TOP_MESSAGEDEFAULT','');
-define($constpref.'_MENUINMODULETOP','Mostrar menú (índice) en la parte superior de este módulo');
-define($constpref.'_LISTASINDEX',"Mostrar índice de contenidos en la parte superior de la categoría");
-define($constpref.'_LISTASINDEXDSC','SÍ significa que la lista automática es mostrada en la parte superior de la categoría. NO significa que un contenido con la prioridad más alta es mostrado en lugar de la lista automática');
+define($constpref.'_MENUINMODULETOP','Mostrar menï¿½ (ï¿½ndice) en la parte superior de este mï¿½dulo');
+define($constpref.'_LISTASINDEX',"Mostrar ï¿½ndice de contenidos en la parte superior de la categorï¿½a");
+define($constpref.'_LISTASINDEXDSC','Sï¿½ significa que la lista automï¿½tica es mostrada en la parte superior de la categorï¿½a. NO significa que un contenido con la prioridad mï¿½s alta es mostrado en lugar de la lista automï¿½tica');
 define($constpref.'_SHOW_BREADCRUMBS','Mostrar breadcrumbs');
-define($constpref.'_SHOW_PAGENAVI','Mostrar navegación de página');
-define($constpref.'_SHOW_PRINTICON','Mostrar icono de versión para imprimir');
+define($constpref.'_SHOW_PAGENAVI','Mostrar navegaciï¿½n de pï¿½gina');
+define($constpref.'_SHOW_PRINTICON','Mostrar icono de versiï¿½n para imprimir');
 define($constpref.'_SHOW_TELLAFRIEND','Mostrar icono de avisa a un amigo');
-define($constpref.'_USE_TAFMODULE','Emplear módulo "avisa a un amigo"');
+define($constpref.'_USE_TAFMODULE','Emplear mï¿½dulo "avisa a un amigo"');
 define($constpref.'_FILTERS','Juego de filtros default');
 define($constpref.'_FILTERSDSC','Ingresar nombres filtro separados con | (barra vertical)');
 define($constpref.'_FILTERSDEFAULT','htmlspecialchars|xcode|smiley|nl2br');
-define($constpref.'_USE_VOTE','Emplear función de VOTAR');
-define($constpref.'_GUESTVOTE_IVL','Votos de anónimos');
-define($constpref.'_GUESTVOTE_IVLDSC','Fijar en cero (0) para deshabilitar votos de anónimos. Otro número significa tiempo en segundos para permitir un segundo voto del mismo número IP.');
-define($constpref.'_HTMLHEADER','Encabezado HTML común');
-define($constpref.'_CSS_URI','URI del archivo CSS de este módulo');
+define($constpref.'_USE_VOTE','Emplear funciï¿½n de VOTAR');
+define($constpref.'_GUESTVOTE_IVL','Votos de anï¿½nimos');
+define($constpref.'_GUESTVOTE_IVLDSC','Fijar en cero (0) para deshabilitar votos de anï¿½nimos. Otro nï¿½mero significa tiempo en segundos para permitir un segundo voto del mismo nï¿½mero IP.');
+define($constpref.'_HTMLHEADER','Encabezado HTML comï¿½n');
+define($constpref.'_CSS_URI','URI del archivo CSS de este mï¿½dulo');
 define($constpref.'_CSS_URIDSC','Puede emplearse ruta relativa o absoluta. default: {mod_url}/index.php?page=main_css');
-define($constpref.'_IMAGES_DIR','Directorio para archivo de imágenes');
-define($constpref.'_IMAGES_DIRDSC','La ruta relativa debe ser fijada en el directorio del módulo. Default: images');
+define($constpref.'_IMAGES_DIR','Directorio para archivo de imï¿½genes');
+define($constpref.'_IMAGES_DIRDSC','La ruta relativa debe ser fijada en el directorio del mï¿½dulo. Default: images');
 define($constpref.'_BODY_EDITOR','Editor de texto');
-define($constpref.'_COM_DIRNAME','Integración de comentario: dirname de d3forum');
-define($constpref.'_COM_FORUM_ID','Integración de comentario: ID de foro');
+define($constpref.'_COM_DIRNAME','Integraciï¿½n de comentario: dirname de d3forum');
+define($constpref.'_COM_FORUM_ID','Integraciï¿½n de comentario: ID de foro');
 
 // blocks
-define($constpref.'_BNAME_MENU','Menú');
+define($constpref.'_BNAME_MENU','Menï¿½');
 define($constpref.'_BNAME_CONTENT','Contenido');
 define($constpref.'_BNAME_LIST','Lista');
 
 // Notify Categories
 define($constpref.'_NOTCAT_GLOBAL', 'Global');
-define($constpref.'_NOTCAT_GLOBALDSC', 'Notificaciones para este módulo');
+define($constpref.'_NOTCAT_GLOBALDSC', 'Notificaciones para este mï¿½dulo');
 
 // Each Notifications
 define($constpref.'_NOTIFY_GLOBAL_WAITINGCONTENT', 'En espera');
-define($constpref.'_NOTIFY_GLOBAL_WAITINGCONTENTCAP', 'Notificar si nuevos envíos o modificaciones están en espera de aprobación (sólo notificar a administradores o moderadores)');
+define($constpref.'_NOTIFY_GLOBAL_WAITINGCONTENTCAP', 'Notificar si nuevos envï¿½os o modificaciones estï¿½n en espera de aprobaciï¿½n (sï¿½lo notificar a administradores o moderadores)');
 define($constpref.'_NOTIFY_GLOBAL_WAITINGCONTENTSBJ', '[{X_SITENAME}] {X_MODULE}: en espera');
 
 }

@@ -26,6 +26,8 @@ define( $constpref.'_ADMENU_MYPREFERENCES' , 'Preferences' ) ;
 
 // configurations
 define($constpref.'_USE_WRAPSMODE','enable wraps mode');
+define($constpref.'_ERR_DOCUMENT_404','Contents path of Error:404');
+define($constpref.'_ERR_DOCUMENT_404DSC','The path to the contents file displayed when it becomes 404 errors (Page Not Found).<br/>Repalaces "xoops_root_path" to "'.XOOPS_ROOT_PATH.'" and "xoops_trust_path" to "'.XOOPS_TRUST_PATH.'" at head.');
 define($constpref.'_USE_REWRITE','enable mod_rewrite mode');
 define($constpref.'_USE_REWRITEDSC','Depends your environment. If you turn this on, rename .htaccess.rewrite_wraps(with wraps) or htaccess.rewrite_normal(without wraps) to .htaccess under XOOPS_ROOT_PATH/modules/(dirname)/');
 define($constpref.'_WRAPSAUTOREGIST','enable auto-registering HTML wrapped files into DB as contents');

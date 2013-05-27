@@ -13,7 +13,7 @@ $modversion['name'] = $mydirname ;
 $modversion['description'] = constant($constpref.'_DESC') ;
 $modversion['version'] = 1.84 ;
 $modversion['credits'] = "PEAK Corp.";
-$modversion['author'] = "GIJ=CHECKMATE<br />PEAK Corp.(http://www.peak.ne.jp/)<br />XOOPS XÅ@(ten)Å@DistributionÅihttps://github.com/XoopsX/picoÅj" ;
+$modversion['author'] = "GIJ=CHECKMATE<br />PEAK Corp.(http://www.peak.ne.jp/)<br />XOOPS XÔøΩ@(ten)ÔøΩ@DistributionÔøΩihttps://github.com/XoopsX/picoÔøΩj" ;
 $modversion['help'] = "" ;
 $modversion['license'] = "GPL" ;
 $modversion['official'] = 0 ;
@@ -166,6 +166,16 @@ $modversion['config'][] = array(
 	'formtype'		=> 'text' ,
 	'valuetype'		=> 'text' ,
 	'default'		=> 'PicoAutoRegisterWraps' ,
+	'options'		=> array()
+) ;
+
+$modversion['config'][] = array(
+	'name'			=> 'err_document_404' ,
+	'title'			=> $constpref.'_ERR_DOCUMENT_404' ,
+	'description'	=> $constpref.'_ERR_DOCUMENT_404DSC' ,
+	'formtype'		=> 'text' ,
+	'valuetype'		=> 'text' ,
+	'default'		=> '' ,
 	'options'		=> array()
 ) ;
 

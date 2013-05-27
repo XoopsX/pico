@@ -43,6 +43,8 @@ define($constpref.'_ADMENU_MYPREFERENCES','ویژگی‌ها');
 
 // configurations
 define($constpref.'_USE_WRAPSMODE','قرار گرفتن در ماژول منتظر‌ها برای تایید');
+define($constpref.'_ERR_DOCUMENT_404','Contents path of Error:404');
+define($constpref.'_ERR_DOCUMENT_404DSC','The path to the contents file displayed when it becomes 404 errors (Page Not Found).<br/>Repalaces "xoops_root_path" to "'.XOOPS_ROOT_PATH.'" and "xoops_trust_path" to "'.XOOPS_TRUST_PATH.'" at head.');
 define($constpref.'_USE_REWRITE','فعال کردن روش mod_rewrite');
 define($constpref.'_USE_REWRITEDSC','بستگی به محیط شما دارد. اگر این گزینه را فعال کنید, نام آدرس‌های .htaccess.rewrite_wraps(with wraps) یا htaccess.rewrite_normal(without wraps) یا .htaccess در XOOPS_ROOT_PATH/modules/(dirname)/ تغییر میکند');
 define($constpref.'_WRAPSAUTOREGIST','فعال سازی ثبت خودکار صفحات HTML در پایگاه داده‌ها');

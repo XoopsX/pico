@@ -219,9 +219,18 @@ function processWrapPath( $path_info )
 	// check wrap file 
 	$wrap_full_path = XOOPS_TRUST_PATH._MD_PICO_WRAPBASE.'/'.$this->mydirname.$path_info ;
 	if( ! file_exists( $wrap_full_path ) ) {
-		// TODO (don't die here)
+		$err404 = $this->config['err_document_404'];
+		if ($err404) {
+			$err404 = preg_replace('#^xoops_root_path#i', XOOPS_ROOT_PATH, $err404);
+			$err404 = preg_replace('#^xoops_trust_path#i', XOOPS_TRUST_PATH, $err404);
+		}
 		header( 'HTTP/1.0 404 Not Found' ) ;
-		die( "The requested file ".htmlspecialchars($path_info)." is not found" ) ;
+		if( ! $err404 || !is_readable( $err404 ) ) {
+			die( "The requested file ".htmlspecialchars($path_info)." is not found" ) ;
+		} else {
+			readfile($err404);
+			exit;
+		}
 	}
 
 	$path_info_is_dir = is_dir( $wrap_full_path ) ;

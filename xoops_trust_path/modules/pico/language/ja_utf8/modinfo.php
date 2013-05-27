@@ -26,6 +26,8 @@ define( $constpref.'_ADMENU_MYPREFERENCES' , '一般設定' ) ;
 
 // configurations
 define($constpref.'_USE_WRAPSMODE','wrapsモードを有効にする');
+define($constpref.'_ERR_DOCUMENT_404','404 エラーで表示するコンテンツ');
+define($constpref.'_ERR_DOCUMENT_404DSC','対象ページが見つからず、404 エラーとなった場合に表示するコンテンツファイルへのパス。<br/>冒頭での "xoops_root_path" は "'.XOOPS_ROOT_PATH.'" に、"xoops_trust_path" は "'.XOOPS_TRUST_PATH.'" と解釈されます。');
 define($constpref.'_USE_REWRITE','mod_rewriteモードを有効にする');
 define($constpref.'_USE_REWRITEDSC','これを有効にする場合、XOOPS_ROOT_PATH/modules/(dirname)/ 下にある.htaccess.rewrite_wraps（wrapsモード有効時）または.htaccess.rewrite_normal（wrapsモード無効時）を、.htaccessにリネームする必要があります。この機能は、XOOPSを運用しているサーバがApacheのmod_rewriteをサポートしていて、.htaccessでの指定が可能でなければ利用できません。');
 define($constpref.'_WRAPSAUTOREGIST','HTMLラップファイルの自動DB登録');

@@ -27,6 +27,8 @@ define($constpref.'_URIM_CLASSDSC','Change it if you want to override the URI ma
 
 // Appended by Xoops Language Checker -GIJOE- in 2008-09-07 05:14:32
 define($constpref.'_EF_CLASS','class for extra_fields');
+define($constpref.'_ERR_DOCUMENT_404','Contents path of Error:404');
+define($constpref.'_ERR_DOCUMENT_404DSC','The path to the contents file displayed when it becomes 404 errors (Page Not Found).<br/>Repalaces "xoops_root_path" to "'.XOOPS_ROOT_PATH.'" and "xoops_trust_path" to "'.XOOPS_TRUST_PATH.'" at head.');
 define($constpref.'_EF_CLASSDSC','Change it if you want to override the handler for extra_fields. default value is PicoExtraFields');
 define($constpref.'_EFIMAGES_DIR','directory for extra_fields');
 define($constpref.'_EFIMAGES_DIRDSC','set relative path from XOOPS_ROOT_PATH. Create and chmod 777 the directory first. default) uploads/(module dirname)');

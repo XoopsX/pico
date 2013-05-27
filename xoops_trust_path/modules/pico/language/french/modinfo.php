@@ -128,6 +128,8 @@ define( $constpref.'_ADMENU_IMPORT' , 'Importer/Synchroniser' ) ;
 
 // configurations
 define($constpref.'_USE_WRAPSMODE','Activer le mode Insértion (wraps)');
+define($constpref.'_ERR_DOCUMENT_404','Contents path of Error:404');
+define($constpref.'_ERR_DOCUMENT_404DSC','The path to the contents file displayed when it becomes 404 errors (Page Not Found).<br/>Repalaces "xoops_root_path" to "'.XOOPS_ROOT_PATH.'" and "xoops_trust_path" to "'.XOOPS_TRUST_PATH.'" at head.');
 define($constpref.'_WRAPSAUTOREGIST','Activer l\'auto-enregistrement des fichiers HTML insérés dans la BD comme contenu');
 define($constpref.'_TOP_MESSAGE','Description de la catégorie TOP');
 define($constpref.'_TOP_MESSAGEDEFAULT','');

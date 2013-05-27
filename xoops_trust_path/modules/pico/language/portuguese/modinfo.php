@@ -2,7 +2,7 @@
 // Translation Info
 // *************************************************************** //
 // ############################################################### //
-// ## XOOPS Cube Legacy 2.1 - Tradução para o Português
+// ## XOOPS Cube Legacy 2.1 - Traduï¿½ï¿½o para o Portuguï¿½s
 // ############################################################### //
 // ## Por............: Mikhail Miguel
 // ## E-mail.........: mikhail@underpop.com
@@ -73,75 +73,77 @@ define($constpref."_LOADED", 1);
 define($constpref."_NAME","pico");
 
 // A brief description of this module
-define($constpref."_DESC","Módulo avançado para edição de conteúdo dinâmico e encapsulamento de conteúdo estático");
+define($constpref."_DESC","Mï¿½dulo avanï¿½ado para ediï¿½ï¿½o de conteï¿½do dinï¿½mico e encapsulamento de conteï¿½do estï¿½tico");
 
 // admin menus
-define($constpref."_ADMENU_CONTENTSADMIN","Conteúdo");
+define($constpref."_ADMENU_CONTENTSADMIN","Conteï¿½do");
 define($constpref."_ADMENU_CATEGORYACCESS","Categorias");
 define($constpref."_ADMENU_IMPORT","Importar/sincronizar");
 define($constpref."_ADMENU_MYLANGADMIN","Idiomas");
 define($constpref."_ADMENU_MYTPLSADMIN","Modelos");
-define($constpref."_ADMENU_MYBLOCKSADMIN","Blocos & permissões");
-define($constpref."_ADMENU_MYPREFERENCES","Preferências");
+define($constpref."_ADMENU_MYBLOCKSADMIN","Blocos & permissï¿½es");
+define($constpref."_ADMENU_MYPREFERENCES","Preferï¿½ncias");
 
 // configurations
 define($constpref."_USE_WRAPSMODE","Habilitar o modo de encapsulamento");
+define($constpref.'_ERR_DOCUMENT_404','Contents path of Error:404');
+define($constpref.'_ERR_DOCUMENT_404DSC','The path to the contents file displayed when it becomes 404 errors (Page Not Found).<br/>Repalaces "xoops_root_path" to "'.XOOPS_ROOT_PATH.'" and "xoops_trust_path" to "'.XOOPS_TRUST_PATH.'" at head.');
 define($constpref."_USE_REWRITE","Habilitar a tecnologia mod_rewrite");
-define($constpref."_USE_REWRITEDSC","Depende das configurações de seu servidor. Ao habilitar esta opção, renomeie o arquivo .htaccess.rewrite_wraps (encapsulamento) ou htaccess.rewrite_normal (sem encapsulamento) como .htaccess no diretório raíz deste módulo");
-define($constpref."_WRAPSAUTOREGIST","Importar automaticamente o artigo estático dos arquivos HTML para o banco de dados.");
-define($constpref."_TOP_MESSAGE","Descrição da categoria principal");
+define($constpref."_USE_REWRITEDSC","Depende das configuraï¿½ï¿½es de seu servidor. Ao habilitar esta opï¿½ï¿½o, renomeie o arquivo .htaccess.rewrite_wraps (encapsulamento) ou htaccess.rewrite_normal (sem encapsulamento) como .htaccess no diretï¿½rio raï¿½z deste mï¿½dulo");
+define($constpref."_WRAPSAUTOREGIST","Importar automaticamente o artigo estï¿½tico dos arquivos HTML para o banco de dados.");
+define($constpref."_TOP_MESSAGE","Descriï¿½ï¿½o da categoria principal");
 define($constpref."_TOP_MESSAGEDEFAULT","");
-define($constpref."_MENUINMODULETOP","Mostrar o menu (índice) no topo deste módulo");
-define($constpref."_LISTASINDEX","Mostrar o índice de artigos na página inicial");
-define($constpref."_LISTASINDEXDSC","Optar por SIM fará com que a página inicial deste módulo seja um índice dos artigos; optar por NÃO fará com que o artigo de maior prioridade seja a página inicial.");
+define($constpref."_MENUINMODULETOP","Mostrar o menu (ï¿½ndice) no topo deste mï¿½dulo");
+define($constpref."_LISTASINDEX","Mostrar o ï¿½ndice de artigos na pï¿½gina inicial");
+define($constpref."_LISTASINDEXDSC","Optar por SIM farï¿½ com que a pï¿½gina inicial deste mï¿½dulo seja um ï¿½ndice dos artigos; optar por Nï¿½O farï¿½ com que o artigo de maior prioridade seja a pï¿½gina inicial.");
 define($constpref."_SHOW_BREADCRUMBS","Mostrar breadcrumbs");
-define($constpref."_SHOW_PAGENAVI","Mostrar a página de navegação do artigo");
-define($constpref."_SHOW_PRINTICON","Mostrar o ícone de página para impressão");
-define($constpref."_SHOW_TELLAFRIEND","Mostrar o ícone de indicação de artigo por email");
-define($constpref."_SEARCHBYUID","Habilitar a opção de conceituar os autores");
-define($constpref."_SEARCHBYUIDDSC","As colaborações de cada associado serão mostradas em suas respectivas páginas de perfil. Desabilite esta opção ao utilizar este módulo apenas para artigo estático.");
-define($constpref."_USE_TAFMODULE","Utilizar o módulo de indicação Tellafriend");
-define($constpref."_FILTERS","Configuração de filtros padrão");
+define($constpref."_SHOW_PAGENAVI","Mostrar a pï¿½gina de navegaï¿½ï¿½o do artigo");
+define($constpref."_SHOW_PRINTICON","Mostrar o ï¿½cone de pï¿½gina para impressï¿½o");
+define($constpref."_SHOW_TELLAFRIEND","Mostrar o ï¿½cone de indicaï¿½ï¿½o de artigo por email");
+define($constpref."_SEARCHBYUID","Habilitar a opï¿½ï¿½o de conceituar os autores");
+define($constpref."_SEARCHBYUIDDSC","As colaboraï¿½ï¿½es de cada associado serï¿½o mostradas em suas respectivas pï¿½ginas de perfil. Desabilite esta opï¿½ï¿½o ao utilizar este mï¿½dulo apenas para artigo estï¿½tico.");
+define($constpref."_USE_TAFMODULE","Utilizar o mï¿½dulo de indicaï¿½ï¿½o Tellafriend");
+define($constpref."_FILTERS","Configuraï¿½ï¿½o de filtros padrï¿½o");
 define($constpref."_FILTERSDSC","Nomes dos filtros de entrada separados por barras verticais. Exemplo: PrimeiroFiltro|SegundoFiltro|TerceitoFiltro");
 define($constpref."_FILTERSDEFAULT","htmlspecialchars|xcode|smiley|nl2br");
 define($constpref."_FILTERSF","Filtros sempre habilitados");
-define($constpref."_FILTERSFDSC","Nomes dos filtros de entrada separados por vírgulas e em ordem de execução. Exemplo: PrimeiroFiltro,SegundoNomes dos filtros de entrada separados por vírgulas e em ordem de execução. Exemplo: PrimeiroFiltro,SegundoFiltro,TerceitoFiltro");
+define($constpref."_FILTERSFDSC","Nomes dos filtros de entrada separados por vï¿½rgulas e em ordem de execuï¿½ï¿½o. Exemplo: PrimeiroFiltro,SegundoNomes dos filtros de entrada separados por vï¿½rgulas e em ordem de execuï¿½ï¿½o. Exemplo: PrimeiroFiltro,SegundoFiltro,TerceitoFiltro");
 define($constpref."_FILTERSP","Filtros sempre proibidos");
-define($constpref."_FILTERSPDSC","Nomes dos filtros de entrada separados por vírgulas.");
+define($constpref."_FILTERSPDSC","Nomes dos filtros de entrada separados por vï¿½rgulas.");
 define($constpref."_SUBMENU_SC","Mostrar o artigo em um submenu");
-define($constpref."_SUBMENU_SCDSC","Ao habilitar esta opção, as categorias serão mostradas por padrão, como também qualquer artigo marcado como MENU");
-define($constpref."_SITEMAP_SC","Mostrar o artigo no módulo sitemap");
+define($constpref."_SUBMENU_SCDSC","Ao habilitar esta opï¿½ï¿½o, as categorias serï¿½o mostradas por padrï¿½o, como tambï¿½m qualquer artigo marcado como MENU");
+define($constpref."_SITEMAP_SC","Mostrar o artigo no mï¿½dulo sitemap");
 define($constpref."_USE_VOTE","Permitir que os visitantes valorem os arquivos");
-define($constpref."_GUESTVOTE_IVL","Votos dos anônimos");
-define($constpref."_GUESTVOTE_IVLDSC","Definir como 0, para desabilitar o voto de visitantes. Qualquer outro número significa o tempo (em seg.) para permitir um segundo envio do mesmo IP.");
-define($constpref."_HTMLHEADER","Cabeçalho HTML padrão");
-define($constpref."_CSS_URI","Endereço URI do arquivo CSS para este módulo");
-define($constpref."_CSS_URIDSC","Pode ser definido o path absoluto ou relativo. padrão: {mod_url}/index.css");
-define($constpref."_IMAGES_DIR","Diretório das imagens em português");
-define($constpref."_IMAGES_DIRDSC","O caminho relativo deve ser definido no diretório do módulo. O padrão é 'images'");
+define($constpref."_GUESTVOTE_IVL","Votos dos anï¿½nimos");
+define($constpref."_GUESTVOTE_IVLDSC","Definir como 0, para desabilitar o voto de visitantes. Qualquer outro nï¿½mero significa o tempo (em seg.) para permitir um segundo envio do mesmo IP.");
+define($constpref."_HTMLHEADER","Cabeï¿½alho HTML padrï¿½o");
+define($constpref."_CSS_URI","Endereï¿½o URI do arquivo CSS para este mï¿½dulo");
+define($constpref."_CSS_URIDSC","Pode ser definido o path absoluto ou relativo. padrï¿½o: {mod_url}/index.css");
+define($constpref."_IMAGES_DIR","Diretï¿½rio das imagens em portuguï¿½s");
+define($constpref."_IMAGES_DIRDSC","O caminho relativo deve ser definido no diretï¿½rio do mï¿½dulo. O padrï¿½o ï¿½ 'images'");
 define($constpref."_BODY_EDITOR","Editor de textos");
-define($constpref."_HISTORY_P_C","Quantas alterações do mesmo artigo serão gravadas no histórico");
-define($constpref."_MLT_HISTORY","Tempo em que cada revisão será arquivada, em segundos");
-define($constpref."_BRCACHE","Tempo de aceleração via cache para as imagens em modo de encapsulamento");
-define($constpref."_BRCACHEDSC","Limite de tempo em segundos em que os arquivos binários (como imagens e vídeos) serão gravados nos navegadores dos visitantes. Se desejar, configure como 0 (zero) para desabilitar esta opção.");
-define($constpref."_COM_DIRNAME","Integração de comentários: nome do diretório do d3forum");
-define($constpref."_COM_FORUM_ID","Integração de comentários: número do fórum");
-define($constpref."_COM_VIEW","Aparência da integração de comentários");
+define($constpref."_HISTORY_P_C","Quantas alteraï¿½ï¿½es do mesmo artigo serï¿½o gravadas no histï¿½rico");
+define($constpref."_MLT_HISTORY","Tempo em que cada revisï¿½o serï¿½ arquivada, em segundos");
+define($constpref."_BRCACHE","Tempo de aceleraï¿½ï¿½o via cache para as imagens em modo de encapsulamento");
+define($constpref."_BRCACHEDSC","Limite de tempo em segundos em que os arquivos binï¿½rios (como imagens e vï¿½deos) serï¿½o gravados nos navegadores dos visitantes. Se desejar, configure como 0 (zero) para desabilitar esta opï¿½ï¿½o.");
+define($constpref."_COM_DIRNAME","Integraï¿½ï¿½o de comentï¿½rios: nome do diretï¿½rio do d3forum");
+define($constpref."_COM_FORUM_ID","Integraï¿½ï¿½o de comentï¿½rios: nï¿½mero do fï¿½rum");
+define($constpref."_COM_VIEW","Aparï¿½ncia da integraï¿½ï¿½o de comentï¿½rios");
 
 // blocks
 define($constpref."_BNAME_MENU","Menu");
 define($constpref."_BNAME_CONTENT","Artigo");
 define($constpref."_BNAME_LIST","Listar");
 define($constpref."_BNAME_SUBCATEGORIES","Subcategorias");
-define($constpref."_BNAME_MYWAITINGS","Minhas colaborações em espera");
+define($constpref."_BNAME_MYWAITINGS","Minhas colaboraï¿½ï¿½es em espera");
 
 // Notify Categories
 define($constpref."_NOTCAT_GLOBAL","Geral");
-define($constpref."_NOTCAT_GLOBALDSC","Notificações deste módulo");
+define($constpref."_NOTCAT_GLOBALDSC","Notificaï¿½ï¿½es deste mï¿½dulo");
 
 // Each Notifications
 define($constpref."_NOTIFY_GLOBAL_WAITINGCONTENT","Artigo pendente");
-define($constpref."_NOTIFY_GLOBAL_WAITINGCONTENTCAP","Notifique-me quando um artigo estiver pendente por aprovação");
+define($constpref."_NOTIFY_GLOBAL_WAITINGCONTENTCAP","Notifique-me quando um artigo estiver pendente por aprovaï¿½ï¿½o");
 define($constpref."_NOTIFY_GLOBAL_WAITINGCONTENTSBJ","[{X_SITENAME}] {X_MODULE}: Artigo pendente");
 define($constpref."_NOTIFY_GLOBAL_NEWCONTENT","Novo artigo");
 define($constpref."_NOTIFY_GLOBAL_NEWCONTENTCAP","Notifique-me quando um artigo for publicado.");

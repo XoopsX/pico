@@ -86,6 +86,8 @@ define($constpref."_ADMENU_MYPREFERENCES","Preferências");
 
 // configurations
 define($constpref."_USE_WRAPSMODE","Habilitar o modo de encapsulamento");
+define($constpref.'_ERR_DOCUMENT_404','Contents path of Error:404');
+define($constpref.'_ERR_DOCUMENT_404DSC','The path to the contents file displayed when it becomes 404 errors (Page Not Found).<br/>Repalaces "xoops_root_path" to "'.XOOPS_ROOT_PATH.'" and "xoops_trust_path" to "'.XOOPS_TRUST_PATH.'" at head.');
 define($constpref."_USE_REWRITE","Habilitar a tecnologia mod_rewrite");
 define($constpref."_USE_REWRITEDSC","Depende das configurações de seu servidor. Ao habilitar esta opção, renomeie o arquivo .htaccess.rewrite_wraps (encapsulamento) ou htaccess.rewrite_normal (sem encapsulamento) como .htaccess no diretório raíz deste módulo");
 define($constpref."_WRAPSAUTOREGIST","Importar automaticamente o artigo estático dos arquivos HTML para o banco de dados.");

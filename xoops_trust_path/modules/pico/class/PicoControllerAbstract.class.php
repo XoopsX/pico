@@ -86,7 +86,21 @@ function getHtmlHeader()
 	return $this->html_header ;
 }
 
-
+function exitFileNotFound()
+{
+	$error404 = $this->mod_config[ 'err_document_404' ];
+	if (! empty( $error404 )) {
+		$error404 = preg_replace( '#^xoops_root_path#i' , XOOPS_ROOT_PATH , $error404 );
+		$error404 = preg_replace( '#^xoops_trust_path#i' , XOOPS_TRUST_PATH , $error404 );
+	}
+	if ( $error404 && is_readable( $error404 ) ) {
+		header( 'HTTP/1.0 404 Not Found' ) ;
+		readfile( $error404 );
+	} else {
+		redirect_header( XOOPS_URL."/modules/$this->mydirname/index.php" , 2 , _MD_PICO_ERR_READCONTENT ) ;
+	}
+	exit;
+}
 
 
 

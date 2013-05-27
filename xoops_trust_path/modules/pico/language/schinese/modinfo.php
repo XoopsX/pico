@@ -82,70 +82,72 @@ define($constpref."_NAME","pico");
 define($constpref."_DESC","a module for staic contents");
 
 // admin menus
-define( $constpref.'_ADMENU_CONTENTSADMIN' , 'ндуб╧эюМ' ) ;
-define( $constpref.'_ADMENU_CATEGORYACCESS' , 'юЮ╠П╧эюМ' ) ;
-define( $constpref.'_ADMENU_IMPORT' , '╣╪хК/м╛╡╫' ) ;
-define( $constpref.'_ADMENU_MYLANGADMIN' , 'сОят╧эюМ' ) ;
-define( $constpref.'_ADMENU_MYTPLSADMIN' , 'дё╟Е╧эюМ' ) ;
-define( $constpref.'_ADMENU_MYBLOCKSADMIN' , 'гЬ©И/х╗оч╧эюМ' ) ;
-define( $constpref.'_ADMENU_MYPREFERENCES' , '╡нйЩиХжц' ) ;
+define( $constpref.'_ADMENU_CONTENTSADMIN' , 'О©╫О©╫О©╫б╧О©╫О©╫О©╫' ) ;
+define( $constpref.'_ADMENU_CATEGORYACCESS' , 'О©╫О©╫О©╫О©╫О©╫О©╫' ) ;
+define( $constpref.'_ADMENU_IMPORT' , 'О©╫О©╫О©╫О©╫/м╛О©╫О©╫' ) ;
+define( $constpref.'_ADMENU_MYLANGADMIN' , 'О©╫О©╫О©╫т╧О©╫О©╫О©╫' ) ;
+define( $constpref.'_ADMENU_MYTPLSADMIN' , 'дёО©╫О©╫О©╫О©╫О©╫' ) ;
+define( $constpref.'_ADMENU_MYBLOCKSADMIN' , 'О©╫О©╫О©╫/х╗О©╫ч╧О©╫О©╫О©╫' ) ;
+define( $constpref.'_ADMENU_MYPREFERENCES' , 'О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫' ) ;
 
 // configurations
-define($constpref.'_USE_WRAPSMODE','фТсцг╤хКдёй╫');
-define($constpref.'_USE_REWRITE','фТсцmod_rewriteдёй╫');
-define($constpref.'_USE_REWRITEDSC','рюю╣сздЗ╣д╩╥╬Ё║ёхГ╧ШдЗфТсц╢коНё╛гК╫╚XOOPS_ROOT_PATH/modules/(dirname)/.htaccess.rewrite_wraps (with wraps) ╩Р .htaccess.rewrite_normal (without wraps) ╦дцШн╙ .htaccess');
-define($constpref.'_WRAPSAUTOREGIST','фТсцвт╤╞╪д╢Фг╤хКйЩ╬щ©Б╣днд╪Ч╣дHTMLвВн╙ндуб');
-define($constpref.'_TOP_MESSAGE','дё©ИйврЁцХйЖ');
+define($constpref.'_USE_WRAPSMODE','О©╫О©╫О©╫О©╫г╤О©╫О©╫дёй╫');
+define($constpref.'_ERR_DOCUMENT_404','Contents path of Error:404');
+define($constpref.'_ERR_DOCUMENT_404DSC','The path to the contents file displayed when it becomes 404 errors (Page Not Found).<br/>Repalaces "xoops_root_path" to "'.XOOPS_ROOT_PATH.'" and "xoops_trust_path" to "'.XOOPS_TRUST_PATH.'" at head.');
+define($constpref.'_USE_REWRITE','О©╫О©╫О©╫О©╫mod_rewriteдёй╫');
+define($constpref.'_USE_REWRITEDSC','О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫д╩О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ц╢О©╫О©╫Нё╛О©╫К╫╚XOOPS_ROOT_PATH/modules/(dirname)/.htaccess.rewrite_wraps (with wraps) О©╫О©╫ .htaccess.rewrite_normal (without wraps) О©╫О©╫О©╫О©╫н╙ .htaccess');
+define($constpref.'_WRAPSAUTOREGIST','О©╫О©╫О©╫О©╫О©╫т╤О©╫О©╫д╢О©╫г╤О©╫О©╫О©╫О©╫щ©О©╫О©╫О©╫д╪О©╫О©╫О©╫HTMLО©╫О©╫н╙О©╫О©╫О©╫О©╫');
+define($constpref.'_TOP_MESSAGE','дёО©╫О©╫О©╫О©╫рЁО©╫О©╫О©╫О©╫');
 define($constpref.'_TOP_MESSAGEDEFAULT','');
-define($constpref.'_MENUINMODULETOP','тз╢кдё©И╣дйврЁотй╬╡к╣╔ (кВрЩ)');
-define($constpref.'_LISTASINDEX',"тзюЮ╠ПйврЁотй╬ндубкВрЩ");
-define($constpref.'_LISTASINDEXDSC','║╟йг║╠╠Мй╬тзюЮ╠ПйврЁотй╬ндубап╠М║ё║╟╥Я║╠тР╠Мй╬отй╬н╙вНпб╣дндуб');
-define($constpref.'_SHOW_BREADCRUMBS','отй╬н╩жц╣╪╨╫');
-define($constpref.'_SHOW_PAGENAVI','отй╬ндуб╣дг╟╨Са╢╫с');
-define($constpref.'_SHOW_PRINTICON','отй╬║╟╢Рс║║╠м╪╠Й');
-define($constpref.'_SHOW_TELLAFRIEND','отй╬║╟в╙╦ФеСся║╠м╪╠Й');
-define($constpref.'_SEARCHBYUID','╪гб╪╣╫вВуъвйао');
-define($constpref.'_SEARCHBYUIDDSC','ндуб╫╚ЁЖожсзфДвВуъ╣дсц╩╖вйаожп║ёхГ╧ШдЗвВн╙╬╡л╛дзхщй╧сц╢кдё©Иё╛гК╧ь╠у╢коН║ё');
-define($constpref.'_USE_TAFMODULE','й╧сц║╟Tellafriend║╠дё©И');
-define($constpref.'_FILTERS','д╛хо╧ЩбкфВиХ╤╗');
-define($constpref.'_FILTERSDSC','йДхК╧ЩбкфВцШё╛╡╒ртйЗоъ (|) ╥ж╦Т');
+define($constpref.'_MENUINMODULETOP','О©╫з╢О©╫дёО©╫О©╫О©╫О©╫О©╫рЁО©╫О©╫й╬О©╫к╣О©╫ (О©╫О©╫О©╫О©╫)');
+define($constpref.'_LISTASINDEX',"О©╫О©╫О©╫О©╫О©╫О©╫О©╫рЁО©╫О©╫й╬О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫");
+define($constpref.'_LISTASINDEXDSC','О©╫О©╫О©╫г║О©╫О©╫О©╫й╬О©╫О©╫О©╫О©╫О©╫О©╫О©╫рЁО©╫О©╫й╬О©╫О©╫О©╫О©╫О©╫п╠?О©╫О©╫О©╫О©╫О©╫О©╫О©╫й╬О©╫О©╫й╬н╙О©╫О©╫О©╫б╣О©╫О©╫О©╫О©╫О©╫');
+define($constpref.'_SHOW_BREADCRUMBS','О©╫О©╫й╬н╩О©╫ц╣О©╫О©╫О©╫');
+define($constpref.'_SHOW_PAGENAVI','О©╫О©╫й╬О©╫О©╫О©╫б╣О©╫г╟О©╫О©╫О©╫О©╫О©╫О©╫');
+define($constpref.'_SHOW_PRINTICON','О©╫О©╫й╬О©╫О©╫О©╫О©╫с║О©╫О©╫м╪О©╫О©╫');
+define($constpref.'_SHOW_TELLAFRIEND','О©╫О©╫й╬О©╫О©╫в╙О©╫О©╫О©╫О©╫О©╫я║О©╫м╪О©╫О©╫');
+define($constpref.'_SEARCHBYUID','О©╫О©╫б╪О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫');
+define($constpref.'_SEARCHBYUIDDSC','О©╫О©╫О©╫б╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ъ╣О©╫О©╫ц╩О©╫О©╫О©╫О©╫О©╫О©╫п║О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫н╙О©╫О©╫л╛О©╫О©╫О©╫О©╫й╧О©╫ц╢О©╫дёО©╫Иё╛О©╫О©╫ь╠у╢О©╫О©╫Н║ё');
+define($constpref.'_USE_TAFMODULE','й╧О©╫ц║О©╫TellafriendО©╫О©╫дёО©╫О©╫');
+define($constpref.'_FILTERS','д╛О©╫о╧О©╫О©╫О©╫О©╫О©╫О©╫Х╤╗');
+define($constpref.'_FILTERSDSC','О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ (|) О©╫ж╦О©╫');
 define($constpref.'_FILTERSDEFAULT','htmlspecialchars|xcode|smiley|nl2br');
-define($constpref.'_FILTERSF','г©жф╣д╧ЩбкфВ');
-define($constpref.'_FILTERSFDSC','йДхК╧ЩбкфВцШё╛╡╒рт╤╨╨е (,) ╥ж╦Т║ё╧ЩбкфВё╨LASTж╦╧ЩбкфВйгтзвН╨С╫в╤нм╗╧Щ╣дё╛фДкЭ╣д╧ЩбкфВйгтзйв╫в╤нм╗╧Щ╣д║ё');
-define($constpref.'_FILTERSP','╫Шж╧╣д╧ЩбкфВ');
-define($constpref.'_FILTERSPDSC','йДхК╧ЩбкфВцШё╛╡╒рт╤╨╨е (,) ╥ж╦Т║ё');
-define($constpref.'_SUBMENU_SC','тз╡к╣╔жпотй╬ндуб');
-define($constpref.'_SUBMENU_SCDSC','д╛хон╙╫Жотй╬юЮ╠ПцШЁф║ёхГ╧ШдЗфТсц╢коНё╛тР╠Й╪гсп║╟╡к╣╔║╠╣дндуб╠ЙлБр╡╫╚отй╬║ё');
-define($constpref.'_SITEMAP_SC','отй╬ндубсзмЬу╬╣ьм╪дё©И');
-define($constpref.'_USE_VOTE','фТсцм╤ф╠╧╕дэ');
-define($constpref.'_GUESTVOTE_IVL','ю╢втсз╥ц©м╣дм╤ф╠');
-define($constpref.'_GUESTVOTE_IVLDSC','иХн╙0ё╛╫Шж╧╥ц©мм╤ф╠║ёфДкЭйЩвжж╦тйпМю╢втоЮм╛IP╣ьж╥╣дты╢нм╤ф╠╪Д╦Тй╠╪Д (цК)║ё');
-define($constpref.'_HTMLHEADER','м╗сцHTMLм╥╡©');
-define($constpref.'_CSS_URI','дё©ИCSSнд╪Ч╣дURI');
-define($constpref.'_CSS_URIDSC','©иртиХ╤╗оЮ╤т╩Р╬Ь╤тб╥╬╤║ёд╛хож╣ё╨{mod_url}/index.css');
-define($constpref.'_IMAGES_DIR','м╪оЯнд╪Чд©б╪');
-define($constpref.'_IMAGES_DIRDSC','оЮ╤тб╥╬╤с╕иХжцн╙дё©Ид©б╪жп║ёд╛хож╣ё╨images');
-define($constpref.'_BODY_EDITOR','уЩнд╠Ю╪╜фВ');
-define($constpref.'_HISTORY_P_C','╢Ф╢╒сзйЩ╬щ©Б╣дпч╤╘╟Ф╠╬йЩ');
-define($constpref.'_MLT_HISTORY','╦Впч╤╘╠╬╣двНп║спп╖й╠╪Д (цК)');
-define($constpref.'_BRCACHE','м╪оЯнд╪Ч╣д╩╨╢Фспп╖й╠╪Д (╫Жочсзг╤хКдёй╫)');
-define($constpref.'_BRCACHEDSC','тз╢кй╠╪ДжпHTMLртмБ╣днд╪Ч╫╚╠╩WEBД╞ююфВ╩╨╢Ф (0н╙╫Шж╧)');
-define($constpref.'_COM_DIRNAME','фюбш-╪╞Ёиё╨d3forumд©б╪цШ');
-define($constpref.'_COM_FORUM_ID','фюбш-╪╞Ёиё╨forum ID');
+define($constpref.'_FILTERSF','г©О©╫ф╣д╧О©╫О©╫О©╫О©╫О©╫');
+define($constpref.'_FILTERSFDSC','О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫т╤О©╫О©╫О©╫ (,) О©╫ж╦О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫LASTж╦О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫в╤О©╫м╗О©╫О©╫дёО©╫О©╫О©╫О©╫О©╫д╧О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫в╫в╤О©╫м╗О©╫О©╫д║О©╫');
+define($constpref.'_FILTERSP','О©╫О©╫ж╧О©╫д╧О©╫О©╫О©╫О©╫О©╫');
+define($constpref.'_FILTERSPDSC','О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫т╤О©╫О©╫О©╫ (,) О©╫ж╦О©╫О©╫О©╫');
+define($constpref.'_SUBMENU_SC','О©╫з╡к╣О©╫О©╫О©╫О©╫О©╫й╬О©╫О©╫О©╫О©╫');
+define($constpref.'_SUBMENU_SCDSC','д╛О©╫О©╫н╙О©╫О©╫О©╫О©╫й╬О©╫О©╫О©╫О©╫О©╫ф║О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ц╢О©╫О©╫Нё╛О©╫О©╫О©╫О©╫О©╫п║О©╫О©╫к╣О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫б╠О©╫О©╫О©╫р╡О©╫О©╫О©╫О©╫й╬О©╫О©╫');
+define($constpref.'_SITEMAP_SC','О©╫О©╫й╬О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫у╬О©╫О©╫м╪дёО©╫О©╫');
+define($constpref.'_USE_VOTE','О©╫О©╫О©╫О©╫м╤ф╠О©╫О©╫О©╫О©╫');
+define($constpref.'_GUESTVOTE_IVL','О©╫О©╫О©╫О©╫О©╫з╥ц©м╣О©╫м╤ф╠');
+define($constpref.'_GUESTVOTE_IVLDSC','О©╫О©╫н╙0О©╫О©╫О©╫О©╫ж╧О©╫ц©О©╫м╤ф╠О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ж╦О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫м╛IPО©╫О©╫ж╥О©╫О©╫О©╫ы╢О©╫м╤ф╠О©╫О©╫О©╫й╠О©╫О©╫ (О©╫О©╫)О©╫О©╫');
+define($constpref.'_HTMLHEADER','м╗О©╫О©╫HTMLм╥О©╫О©╫');
+define($constpref.'_CSS_URI','дёО©╫О©╫CSSО©╫д╪О©╫О©╫О©╫URI');
+define($constpref.'_CSS_URIDSC','О©╫О©╫О©╫О©╫О©╫Х╤╗О©╫О©╫т╩О©╫О©╫О©╫б╥О©╫О©╫О©╫О©╫д╛О©╫О©╫ж╣О©╫О©╫{mod_url}/index.css');
+define($constpref.'_IMAGES_DIR','м╪О©╫О©╫О©╫д╪О©╫д©б╪');
+define($constpref.'_IMAGES_DIRDSC','О©╫О©╫О©╫б╥О©╫О©╫с╕О©╫О©╫О©╫О©╫н╙дёО©╫О©╫д©б╪О©╫п║О©╫д╛О©╫О©╫ж╣О©╫О©╫images');
+define($constpref.'_BODY_EDITOR','О©╫О©╫О©╫д╠Ю╪╜О©╫О©╫');
+define($constpref.'_HISTORY_P_C','О©╫Ф╢╒О©╫О©╫О©╫О©╫щ©О©╫О©╫О©╫ч╤О©╫О©╫Ф╠╬О©╫О©╫');
+define($constpref.'_MLT_HISTORY','О©╫О©╫О©╫ч╤О©╫О©╫О©╫О©╫О©╫О©╫О©╫п║О©╫О©╫п╖й╠О©╫О©╫ (О©╫О©╫)');
+define($constpref.'_BRCACHE','м╪О©╫О©╫О©╫д╪О©╫О©╫д╩О©╫О©╫О©╫О©╫О©╫п╖й╠О©╫О©╫ (О©╫О©╫О©╫О©╫О©╫О©╫г╤О©╫О©╫дёй╫)');
+define($constpref.'_BRCACHEDSC','О©╫з╢О©╫й╠О©╫О©╫О©╫О©╫HTMLО©╫О©╫О©╫О©╫О©╫О©╫д╪О©╫О©╫О©╫О©╫О©╫WEBО©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ (0н╙О©╫О©╫ж╧)');
+define($constpref.'_COM_DIRNAME','О©╫О©╫О©╫О©╫-О©╫О©╫О©╫иёО©╫d3forumд©б╪О©╫О©╫');
+define($constpref.'_COM_FORUM_ID','О©╫О©╫О©╫О©╫-О©╫О©╫О©╫иёО©╫forum ID');
 
 // blocks
-define($constpref.'_BNAME_MENU','╡к╣╔');
-define($constpref.'_BNAME_CONTENT','ндуб');
-define($constpref.'_BNAME_LIST','ап╠М');
+define($constpref.'_BNAME_MENU','О©╫к╣О©╫');
+define($constpref.'_BNAME_CONTENT','О©╫О©╫О©╫О©╫');
+define($constpref.'_BNAME_LIST','О©╫п╠О©╫');
 
 // Notify Categories
-define($constpref.'_NOTCAT_GLOBAL', 'х╚╬ж');
-define($constpref.'_NOTCAT_GLOBALDSC', '╧ьсз╢кдё©И╣дм╗ж╙');
+define($constpref.'_NOTCAT_GLOBAL', 'х╚О©╫О©╫');
+define($constpref.'_NOTCAT_GLOBALDSC', 'О©╫О©╫О©╫з╢О©╫дёО©╫О©╫О©╫м╗ж╙');
 
 // Each Notifications
-define($constpref.'_NOTIFY_GLOBAL_WAITINGCONTENT', '╣х╢Щ');
-define($constpref.'_NOTIFY_GLOBAL_WAITINGCONTENTCAP', 'сппбндуб╥╒╡╪╩РпчуЩ╣х╢ЩиС╨кй╠м╗ж╙ (╫Жм╗ж╙Ё╛╪╤╧эюМт╠╩Р╧эюМт╠)');
-define($constpref.'_NOTIFY_GLOBAL_WAITINGCONTENTSBJ', '[{X_SITENAME}] {X_MODULE}ё╨╣х╢Щ');
+define($constpref.'_NOTIFY_GLOBAL_WAITINGCONTENT', 'О©╫х╢О©╫');
+define($constpref.'_NOTIFY_GLOBAL_WAITINGCONTENTCAP', 'О©╫О©╫О©╫О©╫О©╫О©╫О©╫б╥О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫х╢О©╫О©╫О©╫О©╫й╠м╗ж╙ (О©╫О©╫м╗ж╙О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫т╠О©╫О©╫О©╫О©╫О©╫т╠)');
+define($constpref.'_NOTIFY_GLOBAL_WAITINGCONTENTSBJ', '[{X_SITENAME}] {X_MODULE}О©╫О©╫О©╫х╢О©╫');
 
 }
 

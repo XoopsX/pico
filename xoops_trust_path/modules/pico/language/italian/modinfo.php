@@ -95,6 +95,8 @@ define( $constpref.'_ADMENU_MYPREFERENCES' , 'Preferenze' ) ;
 
 // configurations
 define($constpref.'_USE_WRAPSMODE','Abilita modalità mascheramento');
+define($constpref.'_ERR_DOCUMENT_404','Contents path of Error:404');
+define($constpref.'_ERR_DOCUMENT_404DSC','The path to the contents file displayed when it becomes 404 errors (Page Not Found).<br/>Repalaces "xoops_root_path" to "'.XOOPS_ROOT_PATH.'" and "xoops_trust_path" to "'.XOOPS_TRUST_PATH.'" at head.');
 define($constpref.'_USE_REWRITE','Abilita modalità mod_rewrite');
 define($constpref.'_USE_REWRITEDSC','Dipende dal tuo ambiente. Se attivi, rinomina .htaccess.rewrite_wraps(with wraps) o htaccess.rewrite_normal(without wraps) in  .htaccess nella cartella XOOPS_ROOT_PATH/modules/(dirname)/');
 define($constpref.'_WRAPSAUTOREGIST','Abilita HTML l\'auto registrazione dei files HTML mascherati nel DB come contenuti');
