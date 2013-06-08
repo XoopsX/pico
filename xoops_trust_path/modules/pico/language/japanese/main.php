@@ -163,6 +163,8 @@ define('_MD_PICO_FILTERS_XCODETITLE','BBCode変換');
 define('_MD_PICO_FILTERS_XCODEDESC','自動リンクおよびBBCodeが有効になります');
 define('_MD_PICO_FILTERS_WRAPSTITLE','ページラップ ※仮想パスの中身が読み込まれ、本文は無視されます');
 define('_MD_PICO_FILTERS_WRAPSDESC','XOOPS_TRUST_PATH/wraps/(dirname)/下のファイルを読込みます。(wraps互換)');
+define('_MD_PICO_FILTERS_XOOPSTSTITLE','XOOPS 標準のテキストフィルター(smiley, xcode , img, br)');
+define('_MD_PICO_FILTERS_XOOPSTSDESC','XOOPS の標準のテキストフィルタを、スマイリー, XCode(BBCode), img, 自動改行 を有効した状態で適用します');
 
 
 // permissions

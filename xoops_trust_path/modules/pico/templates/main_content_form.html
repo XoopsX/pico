@@ -137,14 +137,26 @@
 					<{$body_wysiwyg}>
 				<{else}>
 					<{if $xcl22 }>
-						<{if $content.filter_infos.eval.enabled}>
-							<{assign var=editor value=none}>
-						<{elseif !$content.subject || !$content.filter_infos.xcode.enabled}>
-						    <{assign var=editor value=html}>
+						<{assign var=cssClass value=""}>
+						<{if $content.filter_infos._editor_info.editor}>
+							<{if !$content.subject && $content.filter_infos._editor_info.useHtmlAtNew}>
+								<{assign var=editor value=html}>
+							<{else}>
+								<{assign var=editor value=$content.filter_infos._editor_info.editor}>
+							<{/if}>
+							<{if $content.filter_infos._editor_info.cssClass}>
+								<{assign var=cssClass value=" "|cat:$content.filter_infos._editor_info.cssClass}>
+							<{/if}>
 						<{else}>
-						    <{assign var=editor value=bbcode}>
+							<{if $content.filter_infos.eval.enabled}>
+								<{assign var=editor value=none}>
+							<{elseif !$content.subject || !$content.filter_infos.xcode.enabled}>
+							    <{assign var=editor value=html}>
+							<{else}>
+							    <{assign var=editor value=bbcode}>
+							<{/if}>
 						<{/if}>
-						<{xoops_dhtmltarea class=$editor name=body cols=60 rows=15 value=$content.body|htmlspecialchars_decode:$smarty.const.ENT_QUOTES editor=$editor}>
+						<{xoops_dhtmltarea class="$editor$cssClass" name=body cols=60 rows=15 value=$content.body|htmlspecialchars_decode:$smarty.const.ENT_QUOTES editor=$editor}>
 						<{if $legacy_module == 'legacy'}>
 							<{assign var=editor value=bbcode}>
 						<{/if}>
@@ -171,12 +183,14 @@
 			<td class="even">
 				<ul>
 				<{foreach from=$content.filter_infos key="filter_name" item="filter"}>
-					<{if $editor == "html" && !$content.body && ($filter_name == "xcode" || $filter_name == "nl2br")}>
-						<{assign var=check value=0}>
-					<{else}>
-						<{assign var=check value=1}>
+					<{if $filter.title}>
+						<{if $editor == "html" && !$content.body && $content.filter_infos[$filter_name].disableOnHtml}>
+							<{assign var=check value=0}>
+						<{else}>
+							<{assign var=check value=1}>
+						<{/if}>
+						<li title="<{$filter.desc}>"><input type="checkbox" name="filter_enabled_<{$filter_name}>" id="filter_enabled_<{$filter_name}>" value="1" <{if $filter.enabled && $check}>checked="checked"<{/if}> <{if $filter.fixed}>disabled="disabled"<{/if}> /><input type="text" name="filter_weight_<{$filter_name}>" id="filter_weight_<{$filter_name}>" value="<{$filter.weight}>" size="3" class="pico_number_only"  /> <{$filter.title}></li>
 					<{/if}>
-					<li title="<{$filter.desc}>"><input type="checkbox" name="filter_enabled_<{$filter_name}>" id="filter_enabled_<{$filter_name}>" value="1" <{if $filter.enabled && $check}>checked="checked"<{/if}> <{if $filter.fixed}>disabled="disabled"<{/if}> /><input type="text" name="filter_weight_<{$filter_name}>" id="filter_weight_<{$filter_name}>" value="<{$filter.weight}>" size="3" class="pico_number_only"  /> <{$filter.title}></li>
 				<{/foreach}>
 				</ul>
 			</td>
