@@ -246,6 +246,10 @@ function pico_main_get_filter_infos( $filters_separated_pipe , $isadminormod = f
 				'title' => defined( $constpref.'TITLE' ) ? constant( $constpref.'TITLE' ) : $name ,
 				'desc' => defined( $constpref.'DESC' ) ? constant( $constpref.'DESC' ) : '' ,
 				'weight' => defined( $constpref.'INITWEIGHT' ) ? constant( $constpref.'INITWEIGHT' ) : 0 ,
+				'editor' => defined( $constpref.'EDITOR' ) ? constant( $constpref.'EDITOR' ) : '' ,
+				'cssClass' => defined( $constpref.'CSSCLASS' ) ? constant( $constpref.'CSSCLASS' ) : '' ,
+				'useHtmlAtNew' => defined( $constpref.'USEHTMLATNEW' ) ? (bool)constant( $constpref.'USEHTMLATNEW' ) : false ,
+				'disableOnHtml' => defined( $constpref.'DISABLEONHTML' ) ? (bool)constant( $constpref.'DISABLEONHTML' ) : false ,
 				'enabled' => false ,
 			) ;
 
@@ -268,7 +272,19 @@ function pico_main_get_filter_infos( $filters_separated_pipe , $isadminormod = f
 	}
 
 	uasort( $filters , 'pico_main_filter_cmp' ) ;
-
+	
+	// set edito
+	$editor_info = array('editor' => '', 'cssClass' => '', 'disableOnHtml' => false);
+	foreach($filters as $filter) {
+		if ($filter['enabled'] && $filter['editor']) {
+			$editor_info['editor'] = $filter['editor'];
+			$editor_info['cssClass'] = $filter['cssClass'];
+			$editor_info['useHtmlAtNew'] = $filter['useHtmlAtNew'];
+			break;
+		}
+	}
+	$filters['_editor_info'] = $editor_info;
+	
 	return $filters ;
 }
 

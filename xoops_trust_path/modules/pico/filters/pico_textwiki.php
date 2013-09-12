@@ -2,6 +2,11 @@
 
 define('_MD_PICO_FILTERS_TEXTWIKIINITWEIGHT',15);
 
+define('_MD_PICO_FILTERS_TEXTWIKIEDITOR', 'none');
+define('_MD_PICO_FILTERS_TEXTWIKICSSCLASS', 'plain');
+define('_MD_PICO_FILTERS_TEXTWIKIUSEHTMLATNEW', false);
+define('_MD_PICO_FILTERS_TEXTWIKIDISABLEONHTML', false);
+
 function pico_textwiki( $mydirname , $text , $content4assign )
 {
 	// add XOOPS_TRUST_PATH/PEAR/ into include_path
