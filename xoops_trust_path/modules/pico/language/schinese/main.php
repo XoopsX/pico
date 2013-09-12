@@ -182,6 +182,8 @@ define('_MD_PICO_FILTERS_XCODETITLE','BBCode');
 define('_MD_PICO_FILTERS_XCODEDESC','将启用自动链接和BBCode');
 define('_MD_PICO_FILTERS_WRAPSTITLE','嵌入页面 (注意：正文将显示为通过虚拟路径指定的文件)');
 define('_MD_PICO_FILTERS_WRAPSDESC','文件对象是：XOOPS_TRUST_PATH/wraps/(dirname)/file (类似于Wraps模块)');
+define('_MD_PICO_FILTERS_XOOPSTSTITLE','XOOPS default filter (smiley, xcode , img, br)');
+define('_MD_PICO_FILTERS_XOOPSTSDESC','Use XOOPS default text filter, enabled smiley, xcode , img & br');
 
 
 // permissions

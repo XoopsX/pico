@@ -173,6 +173,8 @@ define('_MD_PICO_FILTERS_XCODETITLE','کد‌های BB');
 define('_MD_PICO_FILTERS_XCODEDESC','کد BB و لینک اتوماتیک فعال شد');
 define('_MD_PICO_FILTERS_WRAPSTITLE','پنهان سازی صفحه(نکته:پرونده‌ی مشخص شده در مسیر مجازی در عوض بدنه نشان داده می شود)');
 define('_MD_PICO_FILTERS_WRAPSDESC','پرونده‌های هدف در شاخه‌ی XOOPS_TRUST_PATH/wraps/(dirname)/file قرار دارند');
+define('_MD_PICO_FILTERS_XOOPSTSTITLE','XOOPS default filter (smiley, xcode , img, br)');
+define('_MD_PICO_FILTERS_XOOPSTSDESC','Use XOOPS default text filter, enabled smiley, xcode , img & br');
 
 
 // permissions

@@ -163,6 +163,8 @@ define('_MD_PICO_FILTERS_XCODETITLE','BBCode');
 define('_MD_PICO_FILTERS_XCODEDESC','Lien automatique et BBCode seront activés');
 define('_MD_PICO_FILTERS_WRAPSTITLE','Page Insérée( note : le fichier spécifié dans le chemin virtuel est affiché au lieu de body');
 define('_MD_PICO_FILTERS_WRAPSDESC','Le fichier cible est XOOPS_TRUST_PATH/wraps/(dirname)/file (le même que wraps)');
+define('_MD_PICO_FILTERS_XOOPSTSTITLE','XOOPS default filter (smiley, xcode , img, br)');
+define('_MD_PICO_FILTERS_XOOPSTSDESC','Use XOOPS default text filter, enabled smiley, xcode , img & br');
 
 // permissions
 define('_MD_PICO_PERMS_CAN_READ','LIRE');
