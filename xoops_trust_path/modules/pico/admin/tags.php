@@ -27,18 +27,20 @@ if( ! empty( $_POST['tags_update'] ) ) {
 		if( empty( $_POST['labels'][ $old_label ] ) ) continue ;
 		$new_label = $myts->stripSlashesGPC( $_POST['labels'][ $old_label ] ) ;
 		$weight = intval( $_POST['weights'][ $old_label ] ) ;
-		$db->query( "UPDATE ".$db->prefix($mydirname."_tags")." SET label='".mysql_real_escape_string($new_label)."',weight='$weight' WHERE label='".mysql_real_escape_string($old_label)."'" ) ;
+		$db->query( "UPDATE ".$db->prefix($mydirname."_tags")." SET label=".$db->quoteString($new_label).",weight='$weight' WHERE label=".$db->quoteString($old_label) ) ;
 
 		if( $new_label != $old_label ) {
 			// update tags field in contents table
-			$result = $db->query( "SELECT content_id,tags FROM ".$db->prefix($mydirname."_contents WHERE tags LIKE '%".mysql_real_escape_string($old_label)."%'") ) ;
+			$old_label4sql = $db->quoteString($old_label);
+			$old_label4sql = trim($old_label4sql, $old_label4sql[0]);
+			$result = $db->query( "SELECT content_id,tags FROM ".$db->prefix($mydirname."_contents WHERE tags LIKE '%".$old_label4sql."%'") ) ;
 			while( list( $content_id , $tags ) = $db->fetchRow( $result ) ) {
 				$tags_array = array_flip( explode( ' ' , $tags ) ) ;
 				if( isset( $tags_array[ $old_label ] ) ) {
 					$tags_array[ $new_label ] = $tags_array[ $old_label ] ;
 					unset( $tags_array[ $old_label ] ) ;
 					$new_tags = implode( ' ' , array_flip( $tags_array ) ) ;
-					$db->query( "UPDATE ".$db->prefix($mydirname."_contents")." SET tags='".mysql_real_escape_string($new_tags)."' WHERE content_id=$content_id" ) ;
+					$db->query( "UPDATE ".$db->prefix($mydirname."_contents")." SET tags=".$db->quoteString($new_tags)." WHERE content_id=$content_id" ) ;
 				}
 			}
 		}
@@ -59,16 +61,18 @@ if( ! empty( $_POST['tags_delete'] ) && ! empty( $_POST['action_selects'] ) ) {
 	foreach( $_POST['action_selects'] as $label => $value ) {
 		if( empty( $value ) ) continue ;
 		$label = $myts->stripSlashesGPC( $label ) ;
-		$db->query( "DELETE FROM ".$db->prefix($mydirname."_tags")." WHERE label='".mysql_real_escape_string($label)."'" ) ;
+		$label4sql = $db->quoteString($label);
+		$label4sql = trim($label4sql, $label4sql[0]);
+		$db->query( "DELETE FROM ".$db->prefix($mydirname."_tags")." WHERE label='".$label4sql."'" ) ;
 
 		// update tags field in contents table
-		$result = $db->query( "SELECT content_id,tags FROM ".$db->prefix($mydirname."_contents WHERE tags LIKE '%".mysql_real_escape_string($label)."%'") ) ;
+		$result = $db->query( "SELECT content_id,tags FROM ".$db->prefix($mydirname."_contents WHERE tags LIKE '%".$label4sql."%'") ) ;
 		while( list( $content_id , $tags ) = $db->fetchRow( $result ) ) {
 			$tags_array = array_flip( explode( ' ' , $tags ) ) ;
 			if( isset( $tags_array[ $label ] ) ) {
 				unset( $tags_array[ $label ] ) ;
 				$new_tags = implode( ' ' , array_flip( $tags_array ) ) ;
-				$db->query( "UPDATE ".$db->prefix($mydirname."_contents")." SET tags='".mysql_real_escape_string($new_tags)."' WHERE content_id=$content_id" ) ;
+				$db->query( "UPDATE ".$db->prefix($mydirname."_contents")." SET tags=".$db->quoteString($new_tags)." WHERE content_id=$content_id" ) ;
 			}
 		}
 	}

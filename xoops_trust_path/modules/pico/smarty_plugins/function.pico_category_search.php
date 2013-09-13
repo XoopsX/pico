@@ -37,7 +37,7 @@ function smarty_function_pico_category_search( $params , &$smarty )
 		$module =& $module_handler->getByDirname($mydirname);
 		$configs = $config_handler->getConfigList( $module->getVar('mid') ) ;
 
-		$sql = "SELECT * FROM ".$db->prefix($mydirname."_categories")." c WHERE c.cat_title='".mysql_real_escape_string($cat_title)."'" ;
+		$sql = "SELECT * FROM ".$db->prefix($mydirname."_categories")." c WHERE c.cat_title=".$db->quoteString($cat_title) ;
 		$result = $db->query( $sql ) ;
 		while( $cat_row = $db->fetchArray( $result ) ) {
 			$category4assign = array(
