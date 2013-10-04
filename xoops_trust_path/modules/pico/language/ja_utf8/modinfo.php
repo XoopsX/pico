@@ -116,6 +116,15 @@ define($constpref.'_NOTIFY_CONTENT_COMMENT', '新規コメント');
 define($constpref.'_NOTIFY_CONTENT_COMMENTCAP', 'このコンテンツへのコメント登録があった場合に通知します（未承認であれば通知しません）');
 define($constpref.'_NOTIFY_CONTENT_COMMENTSBJ', '[{X_SITENAME}] {X_MODULE} : コメントの投稿がありました');
 
+define($constpref.'_RSS_LINK_SHOW','RSSリンクを表示する');
+define($constpref.'_SHOW_SUBJECT','表題を表示する');
+define($constpref.'_SHOW_SUBJECTCAP','コンテンツを表示するときに表題を表示します');
+define($constpref.'_MENU_LINK_SHOW','MENUリンクを表示する');
+define($constpref.'_WHEN_TOP_HIDE_BREADCRUMBS','モジュールトップページの時パンくずを隠す');
+define($constpref.'_WHEN_TOP_HIDE_BREADCRUMBSCAP','モジュールトップページの時はパンくずを表示したくないときは　はい　としてください');
+define($constpref.'_TOP_SHOW_MODULE_NAME','TOPカテゴリーはモジュール名を表示する');
+define($constpref.'_TOP_SHOW_MODULE_NAMECAP','いいえ　にした場合はトップカテゴリー名（デフォルト:TOPもしくはトップ）が表示されます');
+
 }
 
 

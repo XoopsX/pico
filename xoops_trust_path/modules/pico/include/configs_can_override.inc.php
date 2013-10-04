@@ -2,7 +2,10 @@
 
 $pico_configs_can_be_override = array(
 	'show_listasindex' => 'bool' ,
+	'show_subject' => 'bool' ,
 	'show_breadcrumbs' => 'bool' ,
+	'when_top_hide_breadcrumbs' => 'bool' ,
+	'top_show_module_name' => 'bool' ,
 	'show_pagenavi' => 'bool' ,
 	'show_printicon' => 'bool' ,
 	'show_tellafriend' => 'bool' ,
@@ -14,6 +17,8 @@ $pico_configs_can_be_override = array(
 	'guest_vote_interval' => 'int' ,
 	'htmlheader' => 'text' ,
 	'allow_each_htmlheader' => 'bool' ,
+	'rss_link_show' => 'bool' ,
+	'menu_link_show' => 'bool' ,
 	'css_uri' => 'text' ,
 	'images_dir' => 'text' ,
 	'body_editor' => 'text' ,

@@ -6,8 +6,9 @@
 <div class="pico_controllers">
 
 	<!-- link to menu -->
+<{if $mod_config.menu_link_show == 1}>
 	<a href="<{$mod_url}>/index.php?page=menu">[<{$smarty.const._MD_PICO_MENU}>]</a>
-	
+<{/if}>
 	<{if $category.isadminormod}>
 	<a href="<{$mod_url}>/index.php?page=categorymanager&amp;cat_id=<{$category.id}>">[<{$smarty.const._MD_PICO_LINK_EDITCATEGORY}>]</a>
 	<{/if}>
@@ -29,13 +30,20 @@
 	<{/if}>
 
 	<!-- link to RSS -->
+<{if $mod_config.rss_link_show == 1}>
 	<a href="<{$mod_url}>/index.php?page=rss&amp;cat_id=<{$category.id}>">[RSS]</a>
-	
+<{/if}>
 </div>
 
 <{if $category.id == 0}><p><{$mod_config.top_message}></p><{/if}>
 
-<h1><{$category.title}></h1>
+<h1>
+<{if $mod_config.top_show_module_name && $category.id == 0}>
+	<{$xoops_modulename}>
+<{else}>
+	<{$category.title}>
+<{/if}>
+</h1>
 <{if $category.isadminormod}>
 	<p>
 	<{$smarty.const._MD_PICO_CONTENTS_TOTAL}>:<{$category.redundants.contents_total}>

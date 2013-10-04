@@ -1,7 +1,9 @@
 <div class="pico_container" id="<{$mydirname}>_container">
 
 <{include file="db:`$mydirname`_inc_breadcrumbs.html"}>
-
+<{if $mod_config.show_subject}>
+<h2><{$content.subject}></h2>
+<{/if}>
 <{* admin controllers *}>
 <{capture name="controllers"}>
 	<{if $content.can_edit}>
