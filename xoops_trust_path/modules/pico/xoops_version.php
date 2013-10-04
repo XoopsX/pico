@@ -356,7 +356,7 @@ $modversion['config'][] = array(
 	'description'	=> '' ,
 	'formtype'		=> 'yesno' ,
 	'valuetype'		=> 'int' ,
-	'default'		=> 1 ,
+	'default'		=> 0 ,
 	'options'		=> array()
 ) ;
 
