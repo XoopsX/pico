@@ -557,11 +557,20 @@ function pico_get_requests4content( $mydirname , &$errors , $auto_approval = tru
 		if( $purifier_enable ) {
 			require_once XOOPS_TRUST_PATH.'/modules/protector/library/HTMLPurifier.auto.php' ;
 			$config = HTMLPurifier_Config::createDefault();
-			$config->set('Cache', 'SerializerPath', XOOPS_TRUST_PATH.'/modules/protector/configs');
-			$config->set('Core', 'Encoding', _CHARSET);
-			//$config->set('HTML', 'Doctype', 'HTML 4.01 Transitional');
+			$config->set('Cache.SerializerPath', XOOPS_TRUST_PATH.'/modules/protector/configs');
+			$config->set('Core.Encoding', 'UTF-8');
+			//$config->set('HTML.Doctype', 'HTML 4.01 Transitional');
 			$purifier = new HTMLPurifier($config);
+			if ($_conv = (_CHARSET !== 'UTF-8')) {
+				$_substitute = mb_substitute_character();
+				mb_substitute_character('none');
+				$ret['body'] = mb_convert_encoding($ret['body'], 'UTF-8', _CHARSET);
+			}
 			$ret['body'] = $purifier->purify( $ret['body'] ) ;
+			if ($_conv) {
+				$ret['body'] = mb_convert_encoding($ret['body'], _CHARSET, 'UTF-8');
+				mb_substitute_character($_substitute);
+			}
 		}
 	}
 
