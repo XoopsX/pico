@@ -14,7 +14,7 @@ function getContentIdsCS( $label )
 {
 	$db =& Database::getInstance() ;
 
-	$sql = "SELECT content_ids FROM ".$db->prefix($this->mydirname."_tags")." WHERE label='".mysql_real_escape_string( $label )."'" ;
+	$sql = "SELECT content_ids FROM ".$db->prefix($this->mydirname."_tags")." WHERE label=".$db->quoteString( $label ) ;
 	if( ! $trs = $db->query( $sql ) ) {
 		if( $GLOBALS['xoopsUser']->isAdmin() ) echo $db->logger->dumpQueries() ;
 		exit ;

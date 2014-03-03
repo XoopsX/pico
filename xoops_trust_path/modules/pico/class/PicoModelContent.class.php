@@ -227,7 +227,7 @@ function filterBody( $content4assign )
 		if( $content4assign['body_cached'] == _MD_PICO_ERR_COMPILEERROR ) {
 			return $content4assign['body_cached'] ;
 		} else {
-			$db->queryF( "UPDATE ".$db->prefix($this->mydirname."_contents")." SET body_cached='".mysql_real_escape_string(_MD_PICO_ERR_COMPILEERROR)."' WHERE content_id=".intval($content4assign['content_id']) ) ;
+			$db->queryF( "UPDATE ".$db->prefix($this->mydirname."_contents")." SET body_cached=".$db->quoteString(_MD_PICO_ERR_COMPILEERROR)." WHERE content_id=".intval($content4assign['content_id']) ) ;
 		}
 	}
 
@@ -276,7 +276,7 @@ function filterBody( $content4assign )
 	// if( $content4assign['last_cached_time'] < $content4assign['modified_time'] ) {
 	if( empty( $content4assign['for_search'] ) || $content4assign['last_cached_time'] < $content4assign['modified_time'] ) {// edit by nao-pon ref. http://www.xugj.org/modules/QandA/index.php?topic_id=1891
 		$for_search = $content4assign['subject_raw'] . ' ' . strip_tags( $text ) . ' ' . implode( ' ' , array_values( pico_common_unserialize( @$content4assign['extra_fields'] ) ) ) ;
-		$db->queryF( "UPDATE ".$db->prefix($this->mydirname."_contents")." SET body_cached='".mysql_real_escape_string($text)."', for_search='".mysql_real_escape_string($for_search)."', last_cached_time=UNIX_TIMESTAMP() WHERE content_id=".intval($content4assign['content_id']) ) ;
+		$db->queryF( "UPDATE ".$db->prefix($this->mydirname."_contents")." SET body_cached=".$db->quoteString($text).", for_search=".$db->quoteString($for_search).", last_cached_time=UNIX_TIMESTAMP() WHERE content_id=".intval($content4assign['content_id']) ) ;
 
 	}
 
@@ -402,14 +402,14 @@ function vote( $uid , $vote_ip , $point )
 	if( $uid ) {
 		$useridentity4select = "uid=$uid" ;
 	} else {
-		$useridentity4select = "vote_ip='".mysql_real_escape_string($vote_ip)."' AND uid=0 AND vote_time>".( time() - @$mod_config['guest_vote_interval'] ) ;	}
+		$useridentity4select = "vote_ip=".$db->quoteString($vote_ip)." AND uid=0 AND vote_time>".( time() - @$mod_config['guest_vote_interval'] ) ;	}
 
 	// delete previous vote
 	$sql = "DELETE FROM ".$db->prefix($this->mydirname."_content_votes")." WHERE content_id=$this->id AND ($useridentity4select)" ;
 	if( ! $result = $db->queryF( $sql ) ) die( _MD_PICO_ERR_SQL.__LINE__ ) ;
 
 	// insert this vote
-	$sql = "INSERT INTO ".$db->prefix($this->mydirname."_content_votes")." (content_id,vote_point,vote_time,vote_ip,uid) VALUES ($this->id,$point,UNIX_TIMESTAMP(),'".mysql_real_escape_string($vote_ip)."',$uid)" ;
+	$sql = "INSERT INTO ".$db->prefix($this->mydirname."_content_votes")." (content_id,vote_point,vote_time,vote_ip,uid) VALUES ($this->id,$point,UNIX_TIMESTAMP(),".$db->quoteString($vote_ip).",$uid)" ;
 	if( ! $db->queryF( $sql ) ) die( _MD_PICO_ERR_SQL.__LINE__ ) ;
 
 	require_once dirname(dirname(__FILE__)).'/include/transact_functions.php' ;

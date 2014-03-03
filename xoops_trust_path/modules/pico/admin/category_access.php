@@ -55,7 +55,7 @@ if( ! empty( $_POST['group_update'] ) ) {
 			foreach( $pico_category_permissions as $perm_name ) {
 				$perms[$perm_name] = empty( $_POST[$perm_name][$gid] ) ? 0 : 1 ;
 			}
-			$db->queryF( "INSERT INTO ".$db->prefix($mydirname."_category_permissions")." (cat_id,groupid,permissions) VALUES ($cat_id,$gid,'".mysql_real_escape_string(serialize($perms))."')" ) ;
+			$db->queryF( "INSERT INTO ".$db->prefix($mydirname."_category_permissions")." (cat_id,groupid,permissions) VALUES ($cat_id,$gid,".$db->quoteString(serialize($perms)).")" ) ;
 		}
 	}
 	redirect_header( XOOPS_URL."/modules/$mydirname/admin/index.php?page=category_access&amp;cat_id=$cat_id" , 3 , _MD_PICO_MSG_UPDATED ) ;
@@ -76,7 +76,7 @@ if( ! empty( $_POST['user_update'] ) ) {
 			foreach( $pico_category_permissions as $perm_name ) {
 				$perms[$perm_name] = empty( $_POST[$perm_name][$uid] ) ? 0 : 1 ;
 			}
-			$db->queryF( "INSERT INTO ".$db->prefix($mydirname."_category_permissions")." (cat_id,uid,permissions) VALUES ($cat_id,$uid,'".mysql_real_escape_string(serialize($perms))."')" ) ;
+			$db->queryF( "INSERT INTO ".$db->prefix($mydirname."_category_permissions")." (cat_id,uid,permissions) VALUES ($cat_id,$uid,".$db->quoteString(serialize($perms)).")" ) ;
 		}
 	}
 	
@@ -85,7 +85,9 @@ if( ! empty( $_POST['user_update'] ) ) {
 		if( empty( $_POST['new_can_read'][$i] ) ) continue ;
 		if( empty( $_POST['new_uids'][$i] ) ) {
 			// add new user by uname
-			$criteria = new Criteria( 'uname' , mysql_real_escape_string( @$_POST['new_unames'][$i] ) ) ;
+			$uname = $db->quoteString( @$_POST['new_unames'][$i] );
+			$uname = trim($uname, $uname[0]);
+			$criteria = new Criteria( 'uname' , $uname ) ;
 			@list( $user ) = $member_handler->getUsers( $criteria ) ;
 		} else {
 			// add new user by uid
@@ -99,7 +101,7 @@ if( ! empty( $_POST['user_update'] ) ) {
 		foreach( $pico_category_permissions as $perm_name ) {
 			$perms[$perm_name] = empty( $_POST['new_'.$perm_name][$i] ) ? 0 : 1 ;
 		}
-		$db->queryF( "INSERT INTO ".$db->prefix($mydirname."_category_permissions")." (cat_id,uid,permissions) VALUES ($cat_id,$uid,'".mysql_real_escape_string(serialize($perms))."')" ) ;
+		$db->queryF( "INSERT INTO ".$db->prefix($mydirname."_category_permissions")." (cat_id,uid,permissions) VALUES ($cat_id,$uid,".$db->quoteString(serialize($perms)).")" ) ;
 	}
 
 	redirect_header( XOOPS_URL."/modules/$mydirname/admin/index.php?page=category_access&amp;cat_id=$cat_id" , 3 , _MD_PICO_MSG_UPDATED ) ;

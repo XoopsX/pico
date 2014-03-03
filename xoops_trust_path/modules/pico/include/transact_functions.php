@@ -101,7 +101,7 @@ function pico_sync_cattree( $mydirname )
 			'subcattree_raw' => $val['subcattree_raw'] ,
 		) ;
 
-		$db->queryF( "UPDATE ".$db->prefix($mydirname."_categories")." SET cat_depth_in_tree=".intval($val['depth']).", cat_order_in_tree=".($key).", cat_path_in_tree='".mysql_real_escape_string(pico_common_serialize($paths))."', cat_redundants='".mysql_real_escape_string(pico_common_serialize($redundants))."' WHERE cat_id=".$val['cat_id'] ) ;
+		$db->queryF( "UPDATE ".$db->prefix($mydirname."_categories")." SET cat_depth_in_tree=".intval($val['depth']).", cat_order_in_tree=".($key).", cat_path_in_tree=".$db->quoteString(pico_common_serialize($paths)).", cat_redundants=".$db->quoteString(pico_common_serialize($redundants))." WHERE cat_id=".$val['cat_id'] ) ;
 	}
 }
 
@@ -190,7 +190,8 @@ function pico_sync_tags( $mydirname )
 
 	// delete/insert or update tags table
 	foreach( $all_tags_array as $tag => $content_ids ) {
-		$label4sql = mysql_real_escape_string( $tag ) ;
+		$label4sql = $db->quoteString( $tag ) ;
+		$jabel4sql = trim($label4sql, $label4sql[0]);
 		$content_ids4sql = implode( ',' , $content_ids ) ;
 		$count = sizeof( $content_ids ) ;
 		$result = $db->queryF( "INSERT INTO ".$db->prefix($mydirname."_tags" )." SET label='$label4sql',weight=0,count='$count',content_ids='$content_ids4sql',created_time=UNIX_TIMESTAMP(),modified_time=UNIX_TIMESTAMP()" ) ;
@@ -267,8 +268,8 @@ function pico_convert_serialized_data( $mydirname )
 	$result = $db->query( $sql ) ;
 	if( $db->getRowsNum( $result ) > 0 ) {
 		while( list( $id , $data ) = $db->fetchRow( $result ) ) {
-			$data4sql = mysql_real_escape_string( pico_common_serialize( pico_common_unserialize( $data ) ) ) ;
-			$db->queryF( "UPDATE ".$db->prefix($mydirname."_content_extras")." SET data='$data4sql' WHERE content_extra_id=$id" ) ;
+			$data4sql = $db->quoteString( pico_common_serialize( pico_common_unserialize( $data ) ) ) ;
+			$db->queryF( "UPDATE ".$db->prefix($mydirname."_content_extras")." SET data=$data4sql WHERE content_extra_id=$id" ) ;
 		}
 	}
 
@@ -277,8 +278,8 @@ function pico_convert_serialized_data( $mydirname )
 	$result = $db->query( $sql ) ;
 	if( $db->getRowsNum( $result ) > 0 ) {
 		while( list( $id , $data ) = $db->fetchRow( $result ) ) {
-			$data4sql = mysql_real_escape_string( pico_common_serialize( pico_common_unserialize( $data ) ) ) ;
-			$db->queryF( "UPDATE ".$db->prefix($mydirname."_contents")." SET extra_fields='$data4sql' WHERE content_id=$id" ) ;
+			$data4sql = $db->quoteString( pico_common_serialize( pico_common_unserialize( $data ) ) ) ;
+			$db->queryF( "UPDATE ".$db->prefix($mydirname."_contents")." SET extra_fields=$data4sql WHERE content_id=$id" ) ;
 		}
 	}
 }
@@ -349,7 +350,7 @@ function pico_makecategory( $mydirname )
 		if( $key == 'cat_vpath' && empty( $val ) ) {
 			$set .= "`$key`=null," ;
 		} else {
-			$set .= "`$key`='".mysql_real_escape_string( $val )."'," ;
+			$set .= "`$key`=".$db->quoteString( $val )."," ;
 		}
 	}
 
@@ -368,7 +369,7 @@ function pico_makecategory( $mydirname )
 	while( $row = $db->fetchArray( $result ) ) {
 		$uid4sql = empty( $row['uid'] ) ? 'null' : intval( $row['uid'] ) ;
 		$groupid4sql = empty( $row['groupid'] ) ? 'null' : intval( $row['groupid'] ) ;
-		$sql = "INSERT INTO ".$db->prefix($mydirname."_category_permissions")." (cat_id,uid,groupid,permissions) VALUES ($new_cat_id,$uid4sql,$groupid4sql,'".mysql_real_escape_string($row['permissions'])."')" ;
+		$sql = "INSERT INTO ".$db->prefix($mydirname."_category_permissions")." (cat_id,uid,groupid,permissions) VALUES ($new_cat_id,$uid4sql,$groupid4sql,".$db->quoteString($row['permissions']).")" ;
 		if( ! $db->query( $sql ) ) die( _MD_PICO_ERR_SQL.__LINE__ ) ;
 	}*/
 
@@ -390,7 +391,7 @@ function pico_updatecategory( $mydirname , $cat_id )
 		if( $key == 'cat_vpath' && empty( $val ) ) {
 			$set .= "`$key`=null," ;
 		} else {
-			$set .= "`$key`='".mysql_real_escape_string( $val )."'," ;
+			$set .= "`$key`=".$db->quoteString( $val )."," ;
 		}
 	}
 
@@ -493,7 +494,7 @@ function pico_get_requests4content( $mydirname , &$errors , $auto_approval = tru
 
 	// vpath duplication check
 	if( $ret['vpath'] ) while( 1 ) {
-		list( $count ) = $db->fetchRow( $db->query( "SELECT COUNT(*) FROM ".$db->prefix($mydirname."_contents")." WHERE vpath='".mysql_real_escape_string($ret['vpath'])."' AND content_id<>".intval($content_id) ) ) ;
+		list( $count ) = $db->fetchRow( $db->query( "SELECT COUNT(*) FROM ".$db->prefix($mydirname."_contents")." WHERE vpath=".$db->quoteString($ret['vpath'])." AND content_id<>".intval($content_id) ) ) ;
 		if( empty( $count ) ) break ;
 		$ext = strrchr( $ret['vpath'] , '.' ) ;
 		if( $ext ) $ret['vpath'] = str_replace( $ext , '.1'.$ext , $ret['vpath'] ) ;
@@ -626,7 +627,7 @@ function pico_makecontent( $mydirname , $auto_approval = true , $isadminormod = 
 		if( $key == 'vpath' && empty( $val ) ) {
 			$set .= "`$key`=null," ;
 		} else {
-			$set .= "`$key`='".mysql_real_escape_string( $val )."'," ;
+			$set .= "`$key`=".$db->quoteString( $val )."," ;
 		}
 	}
 
@@ -637,7 +638,7 @@ function pico_makecontent( $mydirname , $auto_approval = true , $isadminormod = 
 	if( empty( $requests['expiring_time'] ) ) $time4sql .= "expiring_time=0x7fffffff," ;
 
 	// do insert
-	$sql = "INSERT INTO ".$db->prefix($mydirname."_contents")." SET $set $time4sql poster_ip='".mysql_real_escape_string(@$_SERVER['REMOTE_ADDR'])."',modifier_ip='".mysql_real_escape_string(@$_SERVER['REMOTE_ADDR'])."',body_cached='',for_search=''" ;
+	$sql = "INSERT INTO ".$db->prefix($mydirname."_contents")." SET $set $time4sql poster_ip=".$db->quoteString(@$_SERVER['REMOTE_ADDR']).",modifier_ip=".$db->quoteString(@$_SERVER['REMOTE_ADDR']).",body_cached='',for_search=''" ;
 	if( ! $db->queryF( $sql ) ) die( _MD_PICO_ERR_DUPLICATEDVPATH . ' or ' . _MD_PICO_ERR_SQL.__LINE__ ) ;
 	$new_content_id = $db->getInsertId() ;
 	pico_transact_reset_body_cached( $mydirname , $new_content_id ) ;
@@ -673,7 +674,7 @@ function pico_updatecontent( $mydirname , $content_id , $auto_approval = true , 
 		if( $key == 'vpath' && empty( $val ) ) {
 			$set .= "`$key`=null," ;
 		} else {
-			$set .= "`$key`='".mysql_real_escape_string( $val )."'," ;
+			$set .= "`$key`=".$db->quoteString( $val )."," ;
 		}
 	}
 
@@ -686,7 +687,7 @@ function pico_updatecontent( $mydirname , $content_id , $auto_approval = true , 
 
 	// do update
 	$uid = is_object( $xoopsUser ) ? $xoopsUser->getVar('uid') : 0 ;
-	$sql = "UPDATE ".$db->prefix($mydirname."_contents")." SET modifier_uid='$uid', $set $time4sql modifier_ip='".mysql_real_escape_string(@$_SERVER['REMOTE_ADDR'])."',body_cached='',for_search='' WHERE content_id=$content_id" ;
+	$sql = "UPDATE ".$db->prefix($mydirname."_contents")." SET modifier_uid='$uid', $set $time4sql modifier_ip=".$db->quoteString(@$_SERVER['REMOTE_ADDR']).",body_cached='',for_search='' WHERE content_id=$content_id" ;
 	if( ! $db->queryF( $sql ) ) die( _MD_PICO_ERR_DUPLICATEDVPATH . ' or ' . _MD_PICO_ERR_SQL.__LINE__ ) ;
 	pico_transact_reset_body_cached( $mydirname , $content_id ) ;
 
@@ -706,8 +707,8 @@ function pico_transact_reset_body_cached( $mydirname , $content_id )
 	$db =& Database::getInstance() ;
 	list( $use_cache , $body ) = $db->fetchRow( $db->query( "SELECT use_cache,body FROM ".$db->prefix($mydirname."_contents")." WHERE content_id=$content_id" ) ) ;
 	if( empty( $body ) ) return ;
-	$body4sql = $use_cache ? '' : mysql_real_escape_string( strip_tags( $body ) ) ;
-	$db->queryF( "UPDATE ".$db->prefix($mydirname."_contents")." SET body_cached='$body4sql' WHERE content_id=$content_id" ) ;
+	$body4sql = $use_cache ? '\'\'' : $db->quoteString( strip_tags( $body ) ) ;
+	$db->queryF( "UPDATE ".$db->prefix($mydirname."_contents")." SET body_cached=$body4sql WHERE content_id=$content_id" ) ;
 }
 
 
@@ -724,7 +725,7 @@ function pico_transact_copyfromwaitingcontent( $mydirname , $content_id )
 	$uid = is_object( $xoopsUser ) ? $xoopsUser->getVar('uid') : 0 ;
 	if( ! $db->query( "UPDATE ".$db->prefix($mydirname."_contents")." SET body=body_waiting, subject=subject_waiting, htmlheader=htmlheader_waiting, visible=1, approval=1 WHERE content_id=$content_id" ) ) die( _MD_PICO_ERR_SQL.__LINE__ ) ;
 	if( ! $db->query( "UPDATE ".$db->prefix($mydirname."_contents")." SET body_waiting='',subject_waiting='',htmlheader_waiting='' ,body_cached='',for_search='' WHERE content_id=$content_id" ) ) die( _MD_PICO_ERR_SQL.__LINE__ ) ;
-	// /*,`modified_time`=UNIX_TIMESTAMP(),modifier_uid='$uid',modifier_ip='".mysql_real_escape_string(@$_SERVER['REMOTE_ADDR'])."'*/
+	// /*,`modified_time`=UNIX_TIMESTAMP(),modifier_uid='$uid',modifier_ip=".$db->quoteString(@$_SERVER['REMOTE_ADDR'])."*/
 
 	return $content_id ;
 }

@@ -63,8 +63,8 @@ if( ! empty( $_POST['contents_update'] ) && ! empty( $_POST['weights'] ) ) {
 	foreach( $_POST['weights'] as $content_id => $weight ) {
 		$content_id = intval( $content_id ) ;
 		$weight = intval( $weight ) ;
-		$subject4sql = "'".mysql_real_escape_string($myts->stripSlashesGPC( @$_POST['subjects'][$content_id] ))."'" ;
-		$vpath4sql = empty( $_POST['vpaths'][$content_id] ) ? 'null' : "'".mysql_real_escape_string($myts->stripSlashesGPC($_POST['vpaths'][$content_id]))."'" ;
+		$subject4sql = $db->quoteString($myts->stripSlashesGPC( @$_POST['subjects'][$content_id] )) ;
+		$vpath4sql = empty( $_POST['vpaths'][$content_id] ) ? 'null' : $db->quoteString($myts->stripSlashesGPC($_POST['vpaths'][$content_id])) ;
 		$visible = empty( $_POST['visibles'][$content_id] ) ? 0 : 1 ;
 		$show_in_navi = empty( $_POST['show_in_navis'][$content_id] ) ? 0 : 1 ;
 		$show_in_menu = empty( $_POST['show_in_menus'][$content_id] ) ? 0 : 1 ;
