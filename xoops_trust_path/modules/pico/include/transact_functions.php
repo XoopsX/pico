@@ -191,12 +191,11 @@ function pico_sync_tags( $mydirname )
 	// delete/insert or update tags table
 	foreach( $all_tags_array as $tag => $content_ids ) {
 		$label4sql = $db->quoteString( $tag ) ;
-		$jabel4sql = trim($label4sql, $label4sql[0]);
 		$content_ids4sql = implode( ',' , $content_ids ) ;
 		$count = sizeof( $content_ids ) ;
-		$result = $db->queryF( "INSERT INTO ".$db->prefix($mydirname."_tags" )." SET label='$label4sql',weight=0,count='$count',content_ids='$content_ids4sql',created_time=UNIX_TIMESTAMP(),modified_time=UNIX_TIMESTAMP()" ) ;
+		$result = $db->queryF( "INSERT INTO ".$db->prefix($mydirname."_tags" )." SET label=$label4sql,weight=0,count='$count',content_ids='$content_ids4sql',created_time=UNIX_TIMESTAMP(),modified_time=UNIX_TIMESTAMP()" ) ;
 		if( ! $result ) {
-			$db->queryF( "UPDATE ".$db->prefix($mydirname."_tags" )." SET count=$count,content_ids='$content_ids4sql',modified_time=UNIX_TIMESTAMP() WHERE label='$label4sql'" ) ;
+			$db->queryF( "UPDATE ".$db->prefix($mydirname."_tags" )." SET count=$count,content_ids='$content_ids4sql',modified_time=UNIX_TIMESTAMP() WHERE label=$label4sql" ) ;
 		}
 	}
 
