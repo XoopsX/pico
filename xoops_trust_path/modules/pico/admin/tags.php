@@ -32,7 +32,7 @@ if( ! empty( $_POST['tags_update'] ) ) {
 		if( $new_label != $old_label ) {
 			// update tags field in contents table
 			$old_label4sql = $db->quoteString($old_label);
-			$old_label4sql = trim($old_label4sql, $old_label4sql[0]);
+			$old_label4sql = substr($old_label4sql, 1, strlen($old_label4sql)-2);
 			$result = $db->query( "SELECT content_id,tags FROM ".$db->prefix($mydirname."_contents WHERE tags LIKE '%".$old_label4sql."%'") ) ;
 			while( list( $content_id , $tags ) = $db->fetchRow( $result ) ) {
 				$tags_array = array_flip( explode( ' ' , $tags ) ) ;
@@ -62,7 +62,7 @@ if( ! empty( $_POST['tags_delete'] ) && ! empty( $_POST['action_selects'] ) ) {
 		if( empty( $value ) ) continue ;
 		$label = $myts->stripSlashesGPC( $label ) ;
 		$label4sql = $db->quoteString($label);
-		$label4sql = trim($label4sql, $label4sql[0]);
+		$label4sql = substr($label4sql, 1, strlen($label4sql)-2);
 		$db->query( "DELETE FROM ".$db->prefix($mydirname."_tags")." WHERE label='".$label4sql."'" ) ;
 
 		// update tags field in contents table

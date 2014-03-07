@@ -86,7 +86,7 @@ if( ! empty( $_POST['user_update'] ) ) {
 		if( empty( $_POST['new_uids'][$i] ) ) {
 			// add new user by uname
 			$uname = $db->quoteString( @$_POST['new_unames'][$i] );
-			$uname = trim($uname, $uname[0]);
+			$uname = substr($uname, 1, strlen($uname)-2);
 			$criteria = new Criteria( 'uname' , $uname ) ;
 			@list( $user ) = $member_handler->getUsers( $criteria ) ;
 		} else {
