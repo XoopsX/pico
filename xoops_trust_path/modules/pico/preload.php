@@ -41,66 +41,153 @@ class PicoPreloadBase extends XCube_ActionFilter
 			if (!isset($params['switcher'])) {
 				$id = $params['id'];
 				$params['switcher'] = <<<EOD
+(function(){
 var f = $("#{$id}").closest("form");
 // checkbox
-var {$id}_bbcode_checkbox = f.find('input[type="checkbox"][name="filter_enabled_xcode"]');
-var {$id}_br_checkbox = f.find('input[type="checkbox"][name="filter_enabled_nl2br"]');
-var {$id}_smiley_checkbox = f.find('input[type="checkbox"][name="filter_enabled_smiley"]');
-var {$id}_xoopsts_checkbox = f.find('input[type="checkbox"][name="filter_enabled_xoopsts"]');
+var bbcode_c = $("#filter_enabled_xcode");
+var br_c = $("#filter_enabled_nl2br");
+var smiley_c = $("#filter_enabled_smiley");
+var xoopsts_c = $("#filter_enabled_xoopsts");
+var eval_c = $("#filter_enabled_eval");
+var textwiki_c = $("#filter_enabled_textwiki");
+var xoopstpl_c = $("#filter_enabled_xoopstpl");
+var htmlspecialchars_c = $("#filter_enabled_htmlspecialchars");
+// local func
+var set = function(name, check, disable) {
+	var elm = eval(name+"_c");
+	if (elm) {
+		(check !== null) && elm.prop("checked", check);
+		(disable !== null) && elm.attr("disabled", disable);
+	}
+};
+var enable = function() {
+	return ((!eval_c || !eval_c.is(":checked")) && (!textwiki_c || !textwiki_c.is(":checked")) && (!xoopstpl_c || !xoopstpl_c.is(":checked")));
+}
 // xcode checkbox
-if ({$id}_bbcode_checkbox) {
-	{$id}_bbcode_checkbox.change(function(){
-		var obj = CKEDITOR.instances.{$id},
-		conf = ckconfig_{$id},
-		change = false;
-		if ($(this).is(":checked")) {
-			change = 'bbcode';
-			conf = $.extend(conf, ckconfig_bbcode_{$id});
-		} else {
-			change = 'html';
-			conf = $.extend(conf, ckconfig_html_{$id});
+if (bbcode_c) {
+	bbcode_c.click(function(){
+		var change = null;
+		if (enable()) {
+			var obj = CKEDITOR.instances.{$id},
+				conf = ckconfig_{$id};
+			if ($(this).is(":checked")) {
+				if ($("#{$id}").data("editor") != "bbcode") {
+					change = 'bbcode';
+					conf = $.extend(conf, ckconfig_bbcode_{$id});
+				}
+			} else if (!htmlspecialchars_c.is(":checked")) {
+				change = 'html';
+				conf = $.extend(conf, ckconfig_html_{$id});
+			} else {
+				change = 'none';
+			}
+			if (change) {
+				$("#{$id}").data("editor", change);
+				obj && obj.destroy();
+				(change != "none") && CKEDITOR.replace("{$id}", conf);
+			} else {
+				change = "bbcode";
+			}
 		}
-		obj && obj.destroy();
-		$("#{$id}").data("editor", change);
-		{$id}_smiley_checkbox && {$id}_smiley_checkbox.attr("disabled", false);
-		{$id}_br_checkbox && {$id}_br_checkbox.attr("disabled", false);
-		{$id}_br_checkbox && {$id}_br_checkbox.prop("checked", (change == 'bbcode')).attr("disabled", true);
-		{$id}_smiley_checkbox && {$id}_smiley_checkbox.prop("checked", (change == 'bbcode'));
-		{$id}_xoopsts_checkbox && {$id}_xoopsts_checkbox.prop("checked", false);
-		CKEDITOR.replace("{$id}", conf);
+		set("br",((change && change != "none")? (change == 'bbcode') : null),(change == "bbcode" || change == "html"));
+		set("htmlspecialchars",((change && change != "none")? (change == 'bbcode' && htmlspecialchars_c.is(":checked")) : null),false);
+		set("smiley",((change && change != "none")? (change == 'bbcode') : null),false);
+		set("xoopsts",false);
 	});
 }
 // xoopsts checkbox
-if ({$id}_xoopsts_checkbox) {
-	{$id}_xoopsts_checkbox.change(function(){
-		var obj = CKEDITOR.instances.{$id},
-		conf = ckconfig_{$id},
-		change = false;
-		if ($(this).is(":checked")) {
-			change = 'bbcode';
-			conf = $.extend(conf, ckconfig_bbcode_{$id});
-		} else {
-			change = 'html';
-			conf = $.extend(conf, ckconfig_html_{$id});
+if (xoopsts_c && (!eval_c || !eval_c.is(":checked"))) {
+	xoopsts_c.click(function(){
+		var change = null;
+		if (enable()) {
+			var obj = CKEDITOR.instances.{$id},
+			conf = ckconfig_{$id};
+			if ($(this).is(":checked")) {
+				if ($("#{$id}").data("editor") != "bbcode") {
+					change = 'bbcode';
+					conf = $.extend(conf, ckconfig_bbcode_{$id});
+				}
+			} else {
+				change = 'html';
+				conf = $.extend(conf, ckconfig_html_{$id});
+			}
+			if (change) {
+				$("#{$id}").data("editor", change);
+				obj && obj.destroy();
+				CKEDITOR.replace("{$id}", conf);
+			} else {
+				change = "bbcode";
+			}
 		}
-		obj && obj.destroy();
-		$("#{$id}").data("editor", change);
-		{$id}_br_checkbox && {$id}_br_checkbox.attr("disabled", false);
-		{$id}_br_checkbox && {$id}_br_checkbox.prop("checked", false).attr("disabled", true);
-		{$id}_smiley_checkbox && {$id}_smiley_checkbox.prop("checked", false).attr("disabled", (change == 'bbcode'));
-		{$id}_bbcode_checkbox && {$id}_bbcode_checkbox.prop("checked", false);
-		CKEDITOR.replace("{$id}", conf);
+		set("br",false,!!change);
+		set("htmlspecialchars",false,(change == "bbcode"));
+		set("smiley",false,(change == 'bbcode'));
+		set("bbcode",false);
 	});
 }
-// form submit
-$("#{$id}").closest("form").bind("submit", function(){
-	if ({$id}_br_checkbox) {
-		($("#{$id}").data("editor") == "bbcode") && {$id}_br_checkbox.prop("checked", true);
-		($("#{$id}").data("editor") == "html") && {$id}_br_checkbox.prop("checked", false);
-		{$id}_smiley_checkbox && {$id}_smiley_checkbox.attr("disabled", false);
-		{$id}_br_checkbox && {$id}_br_checkbox.attr("disabled", false);
+// htmlspecialchars checkbox
+if (htmlspecialchars_c) {
+	htmlspecialchars_c.click(function(e){
+		var obj = CKEDITOR.instances.{$id},
+			conf = ckconfig_{$id};
+		if ($(this).is(":checked")) {
+			if ($("#{$id}").data("editor") == "html") {
+				$("#{$id}").data("editor", "none");
+				obj && obj.destroy();
+			}
+		} else if (!obj) {
+			$("#{$id}").data("editor", "html");
+			conf = $.extend(conf, ckconfig_html_{$id});
+			CKEDITOR.replace("{$id}", conf);
+		}
+	});
+}
+// eval, textwiki, xoopstpl checkboxes
+eval_c.add(textwiki_c).add(xoopstpl_c).click(function(){
+	var obj = CKEDITOR.instances.{$id};
+	if ($(this).is(":checked")) {
+		obj && obj.destroy();
+		$("#{$id}").data("editor", "none");
+		set("smiley",null,false);
+		set("br",null,false);
+		set("htmlspecialchars",null,false);
+	} else {
+		if (enable()) {
+			var conf = ckconfig_{$id};
+			if (bbcode_c  && bbcode_c.is(":checked")){
+				change = 'bbcode';
+				conf = $.extend(conf, ckconfig_bbcode_{$id});
+			} else {
+				htmlspecialchars_c && htmlspecialchars_c.prop("checked", false).attr("disabled", true);
+				if (xoopsts_c && xoopsts_c.is(":checked")) {
+					change = 'bbcode';
+					conf = $.extend(conf, ckconfig_bbcode_{$id});
+				} else {
+					change = 'html';
+					conf = $.extend(conf, ckconfig_html_{$id});
+				}
+			}
+			$("#{$id}").data("editor", change);
+			CKEDITOR.replace("{$id}", conf);
+		}
 	}
 });
+// form submit
+f.bind("submit", function(){
+	if ($("#{$id}").data("editor") == "bbcode") {
+		set("br",(!xoopsts_c || !xoopsts_c.is(":checked")),false);
+		set("smiley",(!xoopsts_c || !xoopsts_c.is(":checked")));
+	} else if ($("#{$id}").data("editor") == "html") {
+		set("br",false,false);
+	}
+	set("smiley",null,false);
+	set("htmlspecialchars",null,false);
+});
+// init
+if (CKEDITOR.instances.{$id}) {
+	htmlspecialchars_c && htmlspecialchars_c.triggerHandler('click');
+}
+})();
 EOD;
 			}
 		}
