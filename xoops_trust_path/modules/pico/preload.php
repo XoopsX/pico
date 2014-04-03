@@ -57,7 +57,7 @@ var set = function(name, check, disable) {
 	var elm = eval(name+"_c");
 	if (elm) {
 		(check !== null) && elm.prop("checked", check);
-		(disable !== null) && elm.attr("disabled", disable);
+		(disable !== null) && elm.prop("disabled", disable);
 	}
 };
 var enable = function() {
