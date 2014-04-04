@@ -61,11 +61,12 @@ var set = function(name, check, disable) {
 	}
 };
 var enable = function() {
-	return ((!eval_c || !eval_c.is(":checked")) && (!textwiki_c || !textwiki_c.is(":checked")) && (!xoopstpl_c || !xoopstpl_c.is(":checked")));
+	return ((!eval_c || !eval_c.is(":checked")) && (!textwiki_c || !textwiki_c.is(":checked")) && (!xoopstpl_c || !xoopstpl_c.is(":checked")) && (!htmlspecialchars_c || !htmlspecialchars_c.is(":checked") || $("#{$id}").data("editor") != "html"));
 }
 // xcode checkbox
 if (bbcode_c) {
-	bbcode_c.click(function(){
+	bbcode_c.change(function(){
+		if (!$(this).is(":focus")) return;
 		var change = null;
 		if (enable()) {
 			var obj = CKEDITOR.instances.{$id},
@@ -97,7 +98,8 @@ if (bbcode_c) {
 }
 // xoopsts checkbox
 if (xoopsts_c && (!eval_c || !eval_c.is(":checked"))) {
-	xoopsts_c.click(function(){
+	xoopsts_c.change(function(){
+		if (!$(this).is(":focus")) return;
 		var change = null;
 		if (enable()) {
 			var obj = CKEDITOR.instances.{$id},
@@ -127,7 +129,8 @@ if (xoopsts_c && (!eval_c || !eval_c.is(":checked"))) {
 }
 // htmlspecialchars checkbox
 if (htmlspecialchars_c) {
-	htmlspecialchars_c.click(function(e){
+	htmlspecialchars_c.change(function(e){
+		if (!$(this).is(":focus")) return;
 		var obj = CKEDITOR.instances.{$id},
 			conf = ckconfig_{$id};
 		if ($(this).is(":checked")) {
@@ -143,7 +146,8 @@ if (htmlspecialchars_c) {
 	});
 }
 // eval, textwiki, xoopstpl checkboxes
-eval_c.add(textwiki_c).add(xoopstpl_c).click(function(){
+eval_c.add(textwiki_c).add(xoopstpl_c).change(function(){
+	if (!$(this).is(":focus")) return;
 	var obj = CKEDITOR.instances.{$id};
 	if ($(this).is(":checked")) {
 		obj && obj.destroy();
@@ -158,7 +162,7 @@ eval_c.add(textwiki_c).add(xoopstpl_c).click(function(){
 				change = 'bbcode';
 				conf = $.extend(conf, ckconfig_bbcode_{$id});
 			} else {
-				htmlspecialchars_c && htmlspecialchars_c.prop("checked", false).attr("disabled", true);
+				set("htmlspecialchars", false);
 				if (xoopsts_c && xoopsts_c.is(":checked")) {
 					change = 'bbcode';
 					conf = $.extend(conf, ckconfig_bbcode_{$id});
@@ -185,7 +189,10 @@ f.bind("submit", function(){
 });
 // init
 if (CKEDITOR.instances.{$id}) {
-	htmlspecialchars_c && htmlspecialchars_c.triggerHandler('click');
+	if (!enable()) {
+		CKEDITOR.instances.{$id}.destroy();
+		$("#{$id}").data("editor", "none");
+	}
 }
 })();
 EOD;
