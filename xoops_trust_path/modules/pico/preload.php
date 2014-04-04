@@ -10,13 +10,13 @@ class PicoPreloadBase extends XCube_ActionFilter
 {
 	var $mydirname = 'pico' ;
 
-	function postFilter()
+	public function postFilter()
 	{
 		$this->mRoot->mDelegateManager->add("Legacy_BackendAction.GetRSSItems", array( &$this , "getRSSItems" ) ) ;
 		$this->mRoot->mDelegateManager->add('Ckeditor4.Utils.PreBuild_ckconfig', array($this, 'ckeditor4PreBuild'));
 	}
 
-	function getRSSItems( &$items )
+	public function getRSSItems( &$items )
 	{
 /*		$mydirname = $this->mydirname ;
 		$module_handler =& xoops_gethandler( 'module' ) ;
@@ -36,7 +36,8 @@ class PicoPreloadBase extends XCube_ActionFilter
 	
 	public function ckeditor4PreBuild(&$params)
 	{
-		if ($this->mRoot->mContext->mXoopsModule->get('trust_dirname') === 'pico') {
+		$mObj = $this->mRoot->mContext->mXoopsModule;
+		if (is_a($mObj, 'XoopsModule') && $mObj->get('trust_dirname') === 'pico') {
 			$params['allowhtml'] = true;
 			if (!isset($params['switcher'])) {
 				$id = $params['id'];
