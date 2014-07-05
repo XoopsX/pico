@@ -223,7 +223,7 @@ function filterBody( $content4assign )
 	$db =& Database::getInstance() ;
 
 	// marking for compiling errors
-	if( $content4assign['last_cached_time'] < $content4assign['modified_time'] ) {
+	if( @$content4assign['last_cached_time'] && $content4assign['last_cached_time'] < $content4assign['modified_time'] ) {
 		if( $content4assign['body_cached'] == _MD_PICO_ERR_COMPILEERROR ) {
 			return $content4assign['body_cached'] ;
 		} else {
