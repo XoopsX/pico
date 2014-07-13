@@ -490,7 +490,7 @@ class PicoFormProcessBySmartyBase
 
 	function storeDB()
 	{
-		$db =& Database::getInstance() ;
+		$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 	
 		$content_id = intval( $this->content4disp['id'] ) ;
 		$extra_type4sql = addslashes( 'smarty_plugin::' . $this->mypluginname ) ;

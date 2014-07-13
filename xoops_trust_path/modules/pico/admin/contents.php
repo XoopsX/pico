@@ -8,7 +8,7 @@ require_once dirname(dirname(__FILE__)).'/include/history_functions.php' ;
 require_once dirname(dirname(__FILE__)).'/class/pico.textsanitizer.php' ;
 require_once dirname(dirname(__FILE__)).'/class/gtickets.php' ;
 $myts =& PicoTextSanitizer::getInstance() ;
-$db =& Database::getInstance() ;
+$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 
 define( 'SPECIAL_CAT_ID_ALL' , -1 ) ;

@@ -9,7 +9,7 @@ function b_pico_mywaitings_show( $options )
 
 	if( preg_match( '/[^0-9a-zA-Z_-]/' , $mydirname ) ) die( 'Invalid mydirname' ) ;
 
-	$db =& Database::getInstance();
+	$db = XoopsDatabaseFactory::getDatabaseConnection();
 	$myts =& MyTextSanitizer::getInstance();
 	$uid = is_object( @$xoopsUser ) ? $xoopsUser->getVar('uid') : 0 ;
 

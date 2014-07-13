@@ -26,7 +26,7 @@ function b_pico_tags_show( $options )
 	// mydirname check
 	if( preg_match( '/[^0-9a-zA-Z_-]/' , $mydirname ) ) die( 'Invalid mydirname' ) ;
 
-	$db =& Database::getInstance();
+	$db = XoopsDatabaseFactory::getDatabaseConnection();
 	$myts =& MyTextSanitizer::getInstance();
 
 	// sql

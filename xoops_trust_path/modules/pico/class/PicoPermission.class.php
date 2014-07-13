@@ -13,7 +13,7 @@ function PicoPermission()
 {
 	global $xoopsUser ;
 
-	$this->db =& Database::getInstance() ;
+	$this->db = XoopsDatabaseFactory::getDatabaseConnection() ;
 	$this->uid = is_object( @$xoopsUser ) ? $xoopsUser->getVar('uid') : 0 ;
 }
 

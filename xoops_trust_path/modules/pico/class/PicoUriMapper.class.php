@@ -175,7 +175,7 @@ function parsePathInfo( $path_info )
 	// check vpath in DB (1st)
 	$ext = strtolower( substr( strrchr( $path_info , '.' ) , 1 ) ) ;
 	if( in_array( $ext , explode( '|' , _MD_PICO_EXTS4HTMLWRAPPING ) ) ) {
-		$db =& Database::getInstance() ;
+		$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 		$result = $db->query( "SELECT content_id,cat_id FROM ".$db->prefix($this->mydirname."_contents")." WHERE vpath=".$db->quoteString($path_info) ) ;
 		list( $content_id , $cat_id ) = $db->fetchRow( $result ) ;
 		if( $content_id > 0 ) {
@@ -185,7 +185,7 @@ function parsePathInfo( $path_info )
 
 	// check cat_vpath in DB (2nd)
 	if( substr( $path_info , -1 ) == '/' ) {
-		$db =& Database::getInstance() ;
+		$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 		$result = $db->query( "SELECT cat_id FROM ".$db->prefix($this->mydirname."_categories")." WHERE cat_vpath=".$db->quoteString($path_info)." OR cat_vpath=".$db->quoteString(substr($path_info,0,-1)) ) ;
 		list( $cat_id ) = $db->fetchRow( $result ) ;
 		if( $cat_id > 0 ) {
@@ -239,7 +239,7 @@ function processWrapPath( $path_info )
 	if( $path_info_is_dir || in_array( $ext , explode( '|' , _MD_PICO_EXTS4HTMLWRAPPING ) ) ) {
 		// HTML wrapping
 		// get category from path_info (finding longest equality)
-		$db =& Database::getInstance() ;
+		$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 		$dir_tmp = strtolower( $path_info ) ;
 		$vpaths4sql = '' ;
 		do {

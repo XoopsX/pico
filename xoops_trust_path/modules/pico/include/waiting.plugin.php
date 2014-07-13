@@ -2,7 +2,7 @@
 
 function b_waiting_pico( $mydirname )
 {
-	$db =& Database::getInstance();
+	$db = XoopsDatabaseFactory::getDatabaseConnection();
 	$ret = array() ;
 
 	$sql = "SELECT COUNT(*) FROM ".$db->prefix($mydirname."_contents")." WHERE approval=0" ;

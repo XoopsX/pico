@@ -46,7 +46,7 @@ $breadcrumbsObj->appendPath( $currentCategoryObj->getBreadcrumbs() ) ;
 
 /*
 $myts =& PicoTextSanitizer::getInstance() ;
-$db =& Database::getInstance() ;
+$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 // for compatibility "wraps mode" and "GET" in some environment
 if( substr( $_SERVER['REQUEST_URI'] , -19 ) == '?page=singlecontent' ) {

@@ -4,7 +4,7 @@ require_once dirname(__FILE__).'/common_functions.php' ;
 
 function pico_get_content_history_profile( $mydirname , $content_history_id , $content_id = null )
 {
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	if( empty( $content_history_id ) && ! empty( $content_id ) ) {
 		// fetch from contents table as the latest content_history
@@ -47,7 +47,7 @@ $ef4display
 // get content_histories for form
 function pico_get_content_histories4assign( $mydirname , $content_id )
 {
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 	$myts =& MyTextSanitizer::getInstance() ;
 	
 	$ret = array() ;

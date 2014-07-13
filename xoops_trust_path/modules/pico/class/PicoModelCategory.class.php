@@ -21,7 +21,7 @@ function PicoCategoryHandler( $mydirname , $permissions = null )
 
 function getAllCategories( $return_prohibited_also = false )
 {
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	$sql = "SELECT cat_id FROM ".$db->prefix($this->mydirname."_categories")." WHERE 1 ORDER BY cat_order_in_tree" ;
 	if( ! $crs = $db->query( $sql ) ) {
@@ -41,7 +41,7 @@ function getAllCategories( $return_prohibited_also = false )
 
 function getSubCategories( $cat_id , $return_prohibited_also = false )
 {
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	$cat_id = intval( $cat_id ) ;
 	$sql = "SELECT cat_id FROM ".$db->prefix($this->mydirname."_categories")." WHERE pid=$cat_id ORDER BY cat_order_in_tree" ;
@@ -70,7 +70,7 @@ function &get( $cat_id )
 
 function touchVpathMtime( $cat_id , $mtime = null )
 {
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	$mtime = empty( $mtime ) ? time() : intval( $mtime ) ;
 	$db->queryF( "UPDATE ".$db->prefix($this->mydirname."_categories")." SET `cat_vpath_mtime`=$mtime WHERE cat_id=$cat_id" ) ;
@@ -96,7 +96,7 @@ function PicoCategory( $mydirname , $cat_id , $permissions , $allow_makenew = fa
 {
 	$this->mydirname = $mydirname ;
 
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	// get this "category" from given $cat_id
 	$sql = "SELECT * FROM ".$db->prefix($mydirname."_categories")." WHERE cat_id=$cat_id" ;

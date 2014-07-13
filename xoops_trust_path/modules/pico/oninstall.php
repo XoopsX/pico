@@ -20,7 +20,7 @@ function pico_oninstall_base( $module , $mydirname )
 		if( ! is_array( $ret ) ) $ret = array() ;
 	}
 
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 	$mid = $module->getVar('mid') ;
 
 	// TABLES (loading mysql.sql)

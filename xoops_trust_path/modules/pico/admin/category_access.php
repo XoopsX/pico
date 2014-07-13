@@ -3,7 +3,7 @@
 require_once dirname(dirname(__FILE__)).'/include/common_functions.php' ;
 require_once dirname(dirname(__FILE__)).'/class/gtickets.php' ;
 $myts =& MyTextSanitizer::getInstance() ;
-$db =& Database::getInstance() ;
+$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 // get info of the category
 $cat_id = intval( @$_GET['cat_id'] ) ;

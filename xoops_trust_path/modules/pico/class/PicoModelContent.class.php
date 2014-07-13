@@ -17,7 +17,7 @@ function PicoContentHandler( $mydirname )
 
 function getCategoryContents( &$categoryObj , $return_prohibited_also = false )
 {
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	$cat_data = $categoryObj->getData() ;
 
@@ -39,7 +39,7 @@ function getCategoryContents( &$categoryObj , $return_prohibited_also = false )
 
 function getCategoryLatestContents( &$categoryObj , $num = 10 , $fetch_from_subcategories = false )
 {
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	$cat_data = $categoryObj->getData() ;
 
@@ -69,7 +69,7 @@ function getCategoryLatestContents( &$categoryObj , $num = 10 , $fetch_from_subc
 // return not object but array
 function getContents4assign( $whr_append = '1' , $order = 'weight' , $offset = 0 , $limit = 100 , $return_prohibited_also = false )
 {
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	$sql = "SELECT content_id FROM ".$db->prefix($this->mydirname."_contents")." o WHERE ($whr_append) ORDER BY $order" ;
 	if( ! $ors = $db->query( $sql ) ) {
@@ -96,7 +96,7 @@ function getContents4assign( $whr_append = '1' , $order = 'weight' , $offset = 0
 
 function getAutoRegisteredContents( $cat_id )
 {
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	$result = $db->query( "SELECT content_id,vpath FROM ".$db->prefix($this->mydirname."_contents")." WHERE cat_id=$cat_id AND vpath IS NOT NULL AND poster_uid=0" ) ;
 	$ret = array() ;
@@ -123,7 +123,7 @@ var $need_filter_body = false ;
 
 function PicoContent( $mydirname , $content_id , $categoryObj = null , $allow_makenew = false )
 {
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	$this->id = $content_id ;
 	$this->mydirname = $mydirname ;
@@ -220,7 +220,7 @@ function getData4html( $process_body = false )
 
 function filterBody( $content4assign )
 {
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	// marking for compiling errors
 	if( @$content4assign['last_cached_time'] && $content4assign['last_cached_time'] < $content4assign['modified_time'] ) {
@@ -356,7 +356,7 @@ function getBlankContentRow( $categoryObj )
 
 function &getPrevContent()
 {
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	list( $prev_content_id ) = $db->fetchRow( $db->query( "SELECT content_id FROM ".$db->prefix($this->mydirname."_contents")." WHERE (weight<".$this->data['weight']." OR content_id<$this->id AND weight=".$this->data['weight'].") AND cat_id=".$this->data['cat_id']." AND visible AND created_time <= UNIX_TIMESTAMP() AND expiring_time > UNIX_TIMESTAMP() AND show_in_navi ORDER BY weight DESC,content_id DESC LIMIT 1" ) ) ;
 
@@ -369,7 +369,7 @@ function &getPrevContent()
 
 function &getNextContent()
 {
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	list( $next_content_id ) = $db->fetchRow( $db->query( "SELECT content_id FROM ".$db->prefix($this->mydirname."_contents")." WHERE (weight>".$this->data['weight']." OR content_id>$this->id AND weight=".$this->data['weight'].") AND cat_id=".$this->data['cat_id']." AND visible AND created_time <= UNIX_TIMESTAMP() AND expiring_time > UNIX_TIMESTAMP() AND show_in_navi ORDER BY weight,content_id LIMIT 1" ) ) ;
 
@@ -388,7 +388,7 @@ function isError()
 
 function incrementViewed()
 {
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	$db->queryF( "UPDATE ".$db->prefix($this->mydirname."_contents")." SET viewed=viewed+1 WHERE content_id='".$this->id."'" ) ;
 }
@@ -396,7 +396,7 @@ function incrementViewed()
 function vote( $uid , $vote_ip , $point )
 {
 	$mod_config = $this->categoryObj->getOverriddenModConfig() ;
-	$db =& Database::getInstance() ;
+	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	// branch users and guests
 	if( $uid ) {
