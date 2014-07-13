@@ -56,6 +56,8 @@ function getRegisteringWeight( $cat_id , $vpath )
 // protected
 function getInsertSQL( $cat_id , $vpath )
 {
+	$db = XoopsDatabaseFactory::getDatabaseConnection();
+
 	$weight = $this->getRegisteringWeight( $cat_id , $vpath ) ;
 	$file_info = $this->getFileInfo( $vpath ) ;
 
