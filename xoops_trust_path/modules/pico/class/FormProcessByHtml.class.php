@@ -172,7 +172,7 @@ class FormProcessByHtml
 
 	function fetchPost( $input_encoding = null )
 	{
-		$myts =& MyTextSanitizer::getInstance() ;
+		(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance() ;
 
 		$_post = $this->_getPostAsArray( $input_encoding ) ;
 

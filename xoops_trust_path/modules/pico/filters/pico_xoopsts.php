@@ -10,7 +10,7 @@ define('_MD_PICO_FILTERS_XOOPSTSDISABLEONHTML', true);
 function pico_xoopsts( $mydirname , $text , $content4assign )
 {
 	include_once( XOOPS_ROOT_PATH . '/class/module.textsanitizer.php' ) ;
-	$myts =& MyTextSanitizer::getInstance() ;
+	(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance() ;
 
 	// html=0, smiley=1, xcode=1, $image=1, $br=1
 	$text = $myts->displayTarea( $text , 0 , 1 , 1 , 1 , 1 ) ;

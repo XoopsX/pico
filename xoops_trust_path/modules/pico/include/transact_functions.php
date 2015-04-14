@@ -287,7 +287,7 @@ function pico_convert_serialized_data( $mydirname )
 // get requests for category's sql (parse options)
 function pico_get_requests4category( $mydirname , $cat_id = null )
 {
-	$myts =& MyTextSanitizer::getInstance() ;
+	(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance() ;
 	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	include dirname(dirname(__FILE__)).'/include/configs_can_override.inc.php' ;
@@ -417,7 +417,7 @@ function pico_get_requests4content( $mydirname , &$errors , $auto_approval = tru
 {
 	global $xoopsUser ;
 
-	$myts =& MyTextSanitizer::getInstance() ;
+	(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance() ;
 	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 	// get config

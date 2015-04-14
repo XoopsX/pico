@@ -42,7 +42,7 @@ function PicoExtraFields( $mydirname , $mod_config , $auto_approval , $isadminor
 function getSerializedRequestsFromPost()
 {
 	$ret = array() ;
-	$myts =& MyTextSanitizer::getInstance() ;
+	(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance() ;
 
 	// text fields
 	foreach( $_POST as $key => $val ) {

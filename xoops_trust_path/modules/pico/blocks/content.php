@@ -83,7 +83,7 @@ function b_pico_content_edit( $options )
 
 	// get content_title
 	$db = XoopsDatabaseFactory::getDatabaseConnection();
-	$myts =& MyTextSanitizer::getInstance();
+	(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance();
 	$contents = array( 0 => '--' ) ;
 	$result = $db->query( "SELECT content_id,subject,c.cat_depth_in_tree FROM ".$db->prefix($mydirname."_contents")." o LEFT JOIN ".$db->prefix($mydirname."_categories")." c ON o.cat_id=c.cat_id ORDER BY c.cat_order_in_tree,o.weight" ) ;
 	while( list( $id , $sbj , $depth ) = $db->fetchRow( $result ) ) {

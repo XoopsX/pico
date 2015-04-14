@@ -27,7 +27,7 @@ function b_pico_tags_show( $options )
 	if( preg_match( '/[^0-9a-zA-Z_-]/' , $mydirname ) ) die( 'Invalid mydirname' ) ;
 
 	$db = XoopsDatabaseFactory::getDatabaseConnection();
-	$myts =& MyTextSanitizer::getInstance();
+	(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance();
 
 	// sql
 	$sql = "SELECT label,count FROM ".$db->prefix($mydirname."_tags")." ORDER BY $sqlorder LIMIT $limit" ;

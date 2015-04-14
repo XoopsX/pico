@@ -27,7 +27,7 @@ function smarty_function_pico_category_search( $params , &$smarty )
 	$mydirnames = explode( ',' , $dir ) ;
 
 	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
-	$myts =& MyTextSanitizer::getInstance() ;
+	(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance() ;
 	$module_handler =& xoops_gethandler('module');
 	$config_handler =& xoops_gethandler('config');
 

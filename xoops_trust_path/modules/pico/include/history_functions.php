@@ -48,7 +48,7 @@ $ef4display
 function pico_get_content_histories4assign( $mydirname , $content_id )
 {
 	$db = XoopsDatabaseFactory::getDatabaseConnection() ;
-	$myts =& MyTextSanitizer::getInstance() ;
+	(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance() ;
 	
 	$ret = array() ;
 	$sql = "SELECT oh.content_history_id,oh.created_time,oh.modified_time,LENGTH(body) AS body_size,oh.poster_uid,up.uname AS poster_uname,oh.modifier_uid,um.uname AS modifier_uname FROM ".$db->prefix($mydirname."_content_histories")." oh LEFT JOIN ".$db->prefix("users")." up ON oh.poster_uid=up.uid LEFT JOIN ".$db->prefix("users")." um ON oh.modifier_uid=um.uid WHERE oh.content_id=$content_id ORDER BY oh.content_history_id DESC" ;
