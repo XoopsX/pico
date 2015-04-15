@@ -182,7 +182,7 @@ function getData()
  */
 function getData4html( $process_body = false )
 {
-	$myts =& PicoTextSanitizer::getInstance() ;
+	$myts =& PicoTextSanitizer::sGetInstance() ;
 	$user_handler =& xoops_gethandler( 'user' ) ;
 	$mod_config = $this->categoryObj->getOverriddenModConfig() ;
 	$cat_data = $this->categoryObj->getData() ;
@@ -258,7 +258,7 @@ function filterBody( $content4assign )
 				}
 			}
 			require_once dirname(dirname(__FILE__)).'/class/pico.textsanitizer.php' ;
-			$myts =& PicoTextSanitizer::getInstance() ;
+			$myts =& PicoTextSanitizer::sGetInstance() ;
 			$text = $myts->displayTarea( $text , 1 , $smiley , 1 , 1 , $nl2br ) ;
 			$text = $myts->pageBreak( $this->mydirname , $text , $content4assign ) ;
 			continue ;

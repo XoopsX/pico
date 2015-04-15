@@ -149,7 +149,7 @@ function getData()
 
 function getData4html()
 {
-	$myts =& PicoTextSanitizer::getInstance() ;
+	$myts =& PicoTextSanitizer::sGetInstance() ;
 
 	return array(
 		'link' => pico_common_make_category_link4html( $this->mod_config , $this->data ) ,

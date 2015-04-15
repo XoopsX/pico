@@ -45,7 +45,7 @@ $breadcrumbsObj->appendPath( $currentCategoryObj->getBreadcrumbs() ) ;
 
 
 /*
-$myts =& PicoTextSanitizer::getInstance() ;
+$myts =& PicoTextSanitizer::sGetInstance() ;
 $db = XoopsDatabaseFactory::getDatabaseConnection() ;
 
 // for compatibility "wraps mode" and "GET" in some environment

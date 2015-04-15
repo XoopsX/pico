@@ -17,7 +17,7 @@ function PicoPermission()
 	$this->uid = is_object( @$xoopsUser ) ? $xoopsUser->getVar('uid') : 0 ;
 }
 
-function &getInstance()
+public static function &getInstance()
 {
 	static $instance ;
 	if( ! isset( $instance ) ) {

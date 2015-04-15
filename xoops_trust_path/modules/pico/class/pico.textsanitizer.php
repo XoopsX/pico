@@ -11,12 +11,18 @@ class PicoTextSanitizer extends MyTextSanitizer
 		parent::MyTextSanitizer() ;
 	}
 
-	function &getInstance()
+	public static function &sGetInstance()
 	{
 		static $instance;
 		if (!isset($instance)) {
 			$instance = new PicoTextSanitizer();
 		}
+		return $instance;
+	}
+
+	function &getInstance()
+	{
+		$instance =& self::sGetInstance();
 		return $instance;
 	}
 
