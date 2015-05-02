@@ -28,7 +28,7 @@ class PicoTextSanitizer extends MyTextSanitizer
 
 	// override
 	// a fix for original bad implementation
-	function &htmlSpecialChars($text)
+	function &htmlSpecialChars($text, $forEdit = false)
 	{
 		$ret = htmlspecialchars( $text , ENT_QUOTES ) ;
 		return $ret ;
