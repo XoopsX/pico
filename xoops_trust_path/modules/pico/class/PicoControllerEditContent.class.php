@@ -101,7 +101,7 @@ function execute( $request )
 
 
 // virtual
-function processPreview()
+function processPreview( $request )
 {
 }
 

@@ -38,7 +38,8 @@ function processPreview( $request )
 	// permission check (can_edit) done
 
 	// request
-	$request = pico_get_requests4content( $this->mydirname , $errors = array() , $cat_data['post_auto_approved'] , $cat_data['isadminormod'] , $this->assign['content']['id'] ) ;
+	$errors = array();
+	$request = pico_get_requests4content( $this->mydirname , $errors , $cat_data['post_auto_approved'] , $cat_data['isadminormod'] , $this->assign['content']['id'] ) ;
 	$request['body_raw'] = $request['body'] ;
 	$request['subject_raw'] = $request['subject'] ;
 	$request4assign = array_map( 'htmlspecialchars_ent' , $request ) ;
