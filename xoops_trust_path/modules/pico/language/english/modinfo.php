@@ -116,7 +116,14 @@ define($constpref.'_NOTIFY_CONTENT_COMMENT', 'new comment');
 define($constpref.'_NOTIFY_CONTENT_COMMENTCAP', 'Notify if a new comment is posted. (approved comments only)');
 define($constpref.'_NOTIFY_CONTENT_COMMENTSBJ', '[{X_SITENAME}] {X_MODULE} : a new comment');
 
+define($constpref.'_RSS_LINK_SHOW','Show RSS Link');
+define($constpref.'_SHOW_SUBJECT','Show Subject');
+define($constpref.'_SHOW_SUBJECTCAP','Show Subject in contents view');
+define($constpref.'_MENU_LINK_SHOW','Show MENU Link');
+define($constpref.'_WHEN_TOP_HIDE_BREADCRUMBS','Hide breadcrumb in module top page');
+define($constpref.'_WHEN_TOP_HIDE_BREADCRUMBSCAP','If you want to hide breadcrumb in module top page, select YES');
+define($constpref.'_TOP_SHOW_MODULE_NAME','Top category show module name');
+define($constpref.'_TOP_SHOW_MODULE_NAMECAP','If you choose NO, it shows default category name');
+
 }
-
-
 ?>

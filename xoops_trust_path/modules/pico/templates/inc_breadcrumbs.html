@@ -1,7 +1,22 @@
-<{if $mod_config.show_breadcrumbs}>
+<{assign var="show" value=$mod_config.show_breadcrumbs}>
+<{assign var="count" value=$xoops_breadcrumbs|@count}>
+<{if $show}>
+	<{if $count ==1}>
+		<{if $mod_config.when_top_hide_breadcrumbs}>
+			<{assign var="show" value=0}>
+		<{/if}>
+	<{/if}>
+<{/if}>
+<{if $show}>
 <!-- breadcrumbs -->
 <div class="pico_breadcrumbs">
-	<a href="<{$mod_url}>/index.php"><{$smarty.const._MD_PICO_TOP}></a>
+	<a href="<{$mod_url}>/index.php">
+	<{if $mod_config.top_show_module_name}>
+		<{$xoops_modulename}>
+	<{else}>
+		<{$smarty.const._MD_PICO_TOP}>
+	<{/if}>
+	</a>
 	<{foreach from=$xoops_breadcrumbs key="i" item="bc"}>
 		<{if $i > 0}>
 			&nbsp;&gt;&nbsp;

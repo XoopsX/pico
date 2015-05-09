@@ -8,14 +8,21 @@
 		<a href="<{$mod_url}>/index.php?page=makecategory">[<{$smarty.const._MD_PICO_LINK_MAKECATEGORY}>]</a>
 	<{/if}>
 	<!-- link to RSS -->
+<{if $mod_config.rss_link_show == 1}>
 	<a href="<{$mod_url}>/index.php?page=rss">[RSS]</a>
+<{/if}>
 </div>
 
 <p><{$mod_config.top_message}></p>
 
 <{foreach item=category from=$categories}>
-
-	<h<{$category.depth_in_tree|min:5}>><a href="<{$mod_url}>/<{$category.link}>"><{$category.title}></a>
+	<h<{$category.depth_in_tree|min:5}>><a href="<{$mod_url}>/<{$category.link}>">
+	<{if $category.depth_in_tree == 1 && $mod_config.top_show_module_name == 1}>
+		<{$xoops_modulename}>
+	<{else}>
+		<{$category.title}>
+	<{/if}>
+	</a>
 	</h<{$category.depth_in_tree|min:5}>>
 
 	<!-- controllers for each categories -->
@@ -41,7 +48,9 @@
 		<{/if}>
 
 		<!-- link to RSS -->
+<{if $mod_config.rss_link_show == 1}>
 		<a href="<{$mod_url}>/index.php?page=rss&amp;cat_id=<{$category.id}>">[RSS]</a>
+<{/if}>
 	</div>
 
 	<div class="level<{$category.depth_in_tree|min:5}>">

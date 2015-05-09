@@ -14,7 +14,7 @@ $modversion['description'] = constant($constpref.'_DESC') ;
 $modversion['version'] = 1.87 ;
 $modversion['detailed_version'] = "1.87.11" ;
 $modversion['credits'] = "PEAK Corp.";
-$modversion['author'] = "GIJ=CHECKMATE<br />PEAK Corp.(http://www.peak.ne.jp/)<br />XOOPS X�@(ten)�@Distribution�ihttps://github.com/XoopsX/pico�j" ;
+$modversion['author'] = "GIJ=CHECKMATE<br />PEAK Corp.(http://www.peak.ne.jp/)<br />XOOPS X (ten) Distribution(https://github.com/XoopsX/pico)" ;
 $modversion['help'] = "" ;
 $modversion['license'] = "GPL" ;
 $modversion['official'] = 0 ;
@@ -211,9 +211,39 @@ $modversion['config'][] = array(
 ) ;
 
 $modversion['config'][] = array(
+	'name'			=> 'show_subject' ,
+	'title'			=> $constpref.'_SHOW_SUBJECT' ,
+	'description'	=> '' ,
+	'formtype'		=> 'yesno' ,
+	'valuetype'		=> 'int' ,
+	'default'		=> 1 ,
+	'options'		=> array()
+) ;
+
+$modversion['config'][] = array(
 	'name'			=> 'show_breadcrumbs' ,
 	'title'			=> $constpref.'_SHOW_BREADCRUMBS' ,
 	'description'	=> '' ,
+	'formtype'		=> 'yesno' ,
+	'valuetype'		=> 'int' ,
+	'default'		=> 1 ,
+	'options'		=> array()
+) ;
+
+$modversion['config'][] = array(
+	'name'			=> 'when_top_hide_breadcrumbs' ,
+	'title'			=> $constpref.'_WHEN_TOP_HIDE_BREADCRUMBS' ,
+	'description'	=> $constpref.'_WHEN_TOP_HIDE_BREADCRUMBSCAP' ,
+	'formtype'		=> 'yesno' ,
+	'valuetype'		=> 'int' ,
+	'default'		=> 1 ,
+	'options'		=> array()
+) ;
+
+$modversion['config'][] = array(
+	'name'			=> 'top_show_module_name' ,
+	'title'			=> $constpref.'_TOP_SHOW_MODULE_NAME' ,
+	'description'	=> $constpref.'_TOP_SHOW_MODULE_NAMECAP' ,
 	'formtype'		=> 'yesno' ,
 	'valuetype'		=> 'int' ,
 	'default'		=> 1 ,
@@ -226,7 +256,7 @@ $modversion['config'][] = array(
 	'description'	=> '' ,
 	'formtype'		=> 'yesno' ,
 	'valuetype'		=> 'int' ,
-	'default'		=> 1 ,
+	'default'		=> 0 ,
 	'options'		=> array()
 ) ;
 
@@ -236,7 +266,7 @@ $modversion['config'][] = array(
 	'description'	=> '' ,
 	'formtype'		=> 'yesno' ,
 	'valuetype'		=> 'int' ,
-	'default'		=> 1 ,
+	'default'		=> 0 ,
 	'options'		=> array()
 ) ;
 
@@ -246,7 +276,7 @@ $modversion['config'][] = array(
 	'description'	=> '' ,
 	'formtype'		=> 'yesno' ,
 	'valuetype'		=> 'int' ,
-	'default'		=> 1 ,
+	'default'		=> 0 ,
 	'options'		=> array()
 ) ;
 
@@ -256,7 +286,7 @@ $modversion['config'][] = array(
 	'description'	=> '' ,
 	'formtype'		=> 'yesno' ,
 	'valuetype'		=> 'int' ,
-	'default'		=> 1 ,
+	'default'		=> 0 ,
 	'options'		=> array()
 ) ;
 
@@ -326,7 +356,7 @@ $modversion['config'][] = array(
 	'description'	=> '' ,
 	'formtype'		=> 'yesno' ,
 	'valuetype'		=> 'int' ,
-	'default'		=> 1 ,
+	'default'		=> 0 ,
 	'options'		=> array()
 ) ;
 
@@ -353,6 +383,26 @@ $modversion['config'][] = array(
 $modversion['config'][] = array(
 	'name'			=> 'allow_each_htmlheader' ,
 	'title'			=> $constpref.'_ALLOWEACHHEAD' ,
+	'description'	=> '' ,
+	'formtype'		=> 'yesno' ,
+	'valuetype'		=> 'int' ,
+	'default'		=> 0 ,
+	'options'		=> array()
+) ;
+
+$modversion['config'][] = array(
+	'name'			=> 'rss_link_show' ,
+	'title'			=> $constpref.'_RSS_LINK_SHOW' ,
+	'description'	=> '' ,
+	'formtype'		=> 'yesno' ,
+	'valuetype'		=> 'int' ,
+	'default'		=> 0 ,
+	'options'		=> array()
+) ;
+
+$modversion['config'][] = array(
+	'name'			=> 'menu_link_show' ,
+	'title'			=> $constpref.'_MENU_LINK_SHOW' ,
 	'description'	=> '' ,
 	'formtype'		=> 'yesno' ,
 	'valuetype'		=> 'int' ,
